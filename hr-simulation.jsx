@@ -1004,15 +1004,20 @@ window.HRSimulationApp = function ({ simulationData }) {
     );
   }
 
-  if (screen === 'sim_result') {
-    // Track completion once when entering this screen
-    React.useEffect(() => {
-      window.trackEvent('simulation_complete', {
-        title: simulations[currentSimulationIndex].simulation_metadata.simulation_title,
-        score: score
-      });
-    }, [currentSimulationIndex, score]);
+  // Analytics: Track Simulation Completion
+  React.useEffect(() => {
+    if (screen === 'sim_result') {
+      const currentSim = simulations[currentSimulationIndex];
+      if (currentSim) {
+        window.trackEvent('simulation_complete', {
+          title: currentSim.simulation_metadata.simulation_title,
+          score: score
+        });
+      }
+    }
+  }, [screen, currentSimulationIndex, score, simulations]);
 
+  if (screen === 'sim_result') {
     const nextSim = simulations[currentSimulationIndex + 1];
     return (
       <window.SimulationResult
