@@ -64,25 +64,44 @@ window.OptionButton = ({ label, selected, onClick, disabled }) => {
   );
 };
 
-window.FeedbackPanel = ({ type, message, points, onComplete }) => {
+window.FeedbackPanel = ({ type, message, points, outcomes, onComplete }) => {
   const COLORS = window.COLORS;
   const ProgressTimer = window.ProgressTimer;
   const isPositive = type === 'correct';
   const isPartial = type === 'partial';
+
+  // Determine the specific outcome text based on the type
+  let outcomeText = null;
+  if (outcomes) {
+    if (isPositive) outcomeText = outcomes.correct;
+    else if (isPartial) outcomeText = outcomes.partially_correct;
+    else outcomeText = outcomes.incorrect;
+  }
+
+  // Calculate total reading length for duration
+  const totalLength = (outcomeText ? outcomeText.length : 0) + (message ? message.length : 0);
+  // Base duration of 2.5s + 50ms per character
+  const duration = Math.max(2500, totalLength * 50);
+
   return (
     <div style={{ background: isPositive ? COLORS.successBg : isPartial ? COLORS.highlightSoft : COLORS.warningBg, borderRadius: '12px', padding: '16px', borderLeft: `4px solid ${isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.warning}` }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-        <div style={{ fontSize: '14px', color: isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.warning, fontWeight: 600 }}>{isPositive ? '✓ Strong choice' : isPartial ? '◐ Acceptable' : '✗ Risky approach'}</div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+        <div style={{ fontSize: '14px', color: isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.warning, fontWeight: 600 }}>{isPositive ? '✓ Strong choice' : isPartial ? '◐ Acceptable, But Try Again' : '✗ Risky approach, Try Again'}</div>
         <div style={{ fontSize: '14px', fontWeight: 700, color: isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.textMuted }}>{points > 0 ? `+${points} Skillions` : ''}</div>
       </div>
-      <div style={{ fontSize: '13px', color: COLORS.textMuted, lineHeight: 1.5 }}>Your {message}</div>
-      <div style={{ display: 'none' }}>
-        <ProgressTimer
-          duration={Math.max(2000, message.length * 40)}
-          color={isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.warning}
-          onComplete={onComplete}
-        />
-      </div>
+
+      {outcomeText && (
+        <div style={{ marginBottom: '0px' }}>
+          <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 300, lineHeight: 1.4 }}>{outcomeText}</div>
+        </div>
+      )}
+
+
+      <ProgressTimer
+        duration={duration}
+        color={isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.warning}
+        onComplete={onComplete}
+      />
     </div>
   );
 };
@@ -656,6 +675,11 @@ window.HRSimulationApp = function ({ simulationData }) {
   const [isExplainExpanded, setIsExplainExpanded] = useState(false);
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
   const [score, setScore] = useState(0);
+  const [streak, setStreak] = useState(0);
+  const [shuffledOptions, setShuffledOptions] = useState([]);
+  const [optionIndices, setOptionIndices] = useState([]);
+  const [hasAttemptedCurrentStep, setHasAttemptedCurrentStep] = useState(false);
+  const [attemptCount, setAttemptCount] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -697,6 +721,25 @@ window.HRSimulationApp = function ({ simulationData }) {
   const steps = currentSim.step_level_design || [];
   const step = steps[currentStep];
 
+  useEffect(() => {
+    if (step && step.options_inputs && Array.isArray(step.options_inputs) && step.options_inputs.length > 0) {
+      // Create indices array [0, 1, 2, ...]
+      const indices = step.options_inputs.map((_, i) => i);
+      // Fisher-Yates Shuffle
+      for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+      }
+      setOptionIndices(indices);
+      setShuffledOptions(indices.map(i => step.options_inputs[i]));
+    } else {
+      setShuffledOptions([]);
+      setOptionIndices([]);
+    }
+    setHasAttemptedCurrentStep(false);
+    setAttemptCount(0);
+  }, [step]);
+
   const [selectedCandidates, setSelectedCandidates] = useState([]);
   const [selectedRisks, setSelectedRisks] = useState({});
   const [selectedOption, setSelectedOption] = useState(null);
@@ -732,15 +775,48 @@ window.HRSimulationApp = function ({ simulationData }) {
 
   const evaluateStep = (optionIdx = null, candidates = null) => {
     let type = 'correct';
-    const finalOption = optionIdx !== null ? optionIdx : selectedOption;
 
-    if (finalOption !== null) {
-      if (finalOption > 1) type = 'incorrect';
-      else if (finalOption === 1) type = 'partial';
+    // Determine the original logical index from the visual (shuffled) index
+    const visualIndex = optionIdx !== null ? optionIdx : selectedOption;
+    let originalIndex = visualIndex; // Default callback fallback
+
+    if (visualIndex !== null && optionIndices.length > 0) {
+      originalIndex = optionIndices[visualIndex];
     }
 
-    const points = type === 'correct' ? 10 : type === 'partial' ? 5 : 0;
-    // Score update removed from here - deferred to proceedToNextStep
+    if (originalIndex !== null) {
+      if (originalIndex > 1) type = 'incorrect';
+      else if (originalIndex === 1) type = 'partial';
+    }
+
+    // Points & Streak Logic
+    let points = 0;
+    let streakBonus = 0;
+
+    // Only update streak if this is the first attempt at this step
+    let currentStreakCount = streak;
+
+    if (!hasAttemptedCurrentStep) {
+      if (type === 'correct') {
+        currentStreakCount = streak + 1;
+        setStreak(currentStreakCount);
+      } else {
+        setStreak(0); // Break streak
+        currentStreakCount = 0;
+      }
+      setHasAttemptedCurrentStep(true);
+    }
+
+    // Calculate Points
+    if (type === 'correct' && !hasAttemptedCurrentStep) {
+      // Base 10 + (Streak * 5)
+      // Example: Streak 1 -> 10 + 5 = 15
+      // Example: Streak 2 -> 10 + 10 = 20
+      points = 10 + (currentStreakCount * 5);
+    } else {
+      // No points for partial, incorrect, or retries
+      points = 0;
+    }
 
     const result = {
       type: type,
@@ -748,7 +824,26 @@ window.HRSimulationApp = function ({ simulationData }) {
       points: points
     };
     setStepResults(prev => [...prev, result]);
+    setAttemptCount(prev => prev + 1);
     setIsFeedbackVisible(true);
+  };
+
+  const handleFeedbackComplete = () => {
+    const lastResult = stepResults[stepResults.length - 1];
+    if (lastResult.type === 'correct') {
+      proceedToNextStep();
+    } else {
+      // Retry Flow
+      setIsFeedbackVisible(false);
+      setSelectedOption(null);    // Reset selection to allow picking again
+
+      // Auto-expand explanation ONLY if user has failed 3 times
+      if (attemptCount >= 3) {
+        setTimeout(() => {
+          setIsExplainExpanded(true);
+        }, 300);
+      }
+    }
   };
 
   const proceedToNextStep = () => {
@@ -860,7 +955,13 @@ window.HRSimulationApp = function ({ simulationData }) {
       const result = stepResults[stepResults.length - 1];
       artefact = (
         <div style={{ marginTop: '20px' }}>
-          <FeedbackPanel type={result.type} message={result.message} points={result.points} onComplete={proceedToNextStep} />
+          <FeedbackPanel
+            type={result.type}
+            message={result.message}
+            points={result.points}
+            outcomes={step.outcomes}
+            onComplete={handleFeedbackComplete}
+          />
         </div>
       );
     } else {
@@ -887,30 +988,30 @@ window.HRSimulationApp = function ({ simulationData }) {
         // We try to find the scenario context to get the incoming message
         const scenario = currentSim.scenario_breakdown.find(s => s.scenario_id === step.scenario_id);
         const message = scenario ? scenario.crisis_or_decision_trigger : "How do you respond?";
-        artefact = <window.ChatResponseSelector incomingMessage={message} options={step.options_inputs} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.ChatResponseSelector incomingMessage={message} options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
       } else if (description.includes('timeline')) {
         // V2 S1 Step 2: Timeline
-        artefact = <window.TimelineVisualizer options={step.options_inputs} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.TimelineVisualizer options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
       } else if (description.includes('huddle')) {
         // V2 S1 Step 3: Video Call
-        artefact = <window.VideoCallProfile options={step.options_inputs} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.VideoCallProfile options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
       } else if (description.includes('comparison')) {
         // V2 S1 Step 4: Comparison
-        artefact = <window.CandidateComparisonTable options={step.options_inputs} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.CandidateComparisonTable options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
       } else if (description.includes('approval note')) {
         // V2 S2 Step 6: Approval Note
-        artefact = <window.ApprovalNoteBuilder options={step.options_inputs} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.ApprovalNoteBuilder options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
       } else if (description.includes('one-page memo')) {
         // V2 S3 Step 9: Memo Structure
-        artefact = <window.MemoStructureBuilder options={step.options_inputs} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.MemoStructureBuilder options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
       } else if (description.includes('closure proof')) {
         // V2 S3 Step 15: Closure Proof
-        artefact = <window.ClosureProofPacket options={step.options_inputs} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.ClosureProofPacket options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
       } else if ((step.interaction_type === 'ordering' || step.interaction_type === 'selection') && step.options_inputs) {
         // Generic multi-select / ordering builder
         artefact = (
           <window.RationaleBuilder
-            pool={step.options_inputs}
+            pool={shuffledOptions}
             maxSelection={step.max_selection || 3}
             onComplete={(selected) => evaluateStep(selected[0])}
           />
@@ -927,7 +1028,7 @@ window.HRSimulationApp = function ({ simulationData }) {
         // Catch-all for MCQ, custom_compose, trade_off_meters (button variant)
         artefact = (
           <div style={{ marginBottom: '20px' }}>
-            {step.options_inputs.map((opt, i) => (
+            {shuffledOptions.map((opt, i) => (
               <OptionButton key={i} label={opt} selected={selectedOption === i} onClick={() => handleOptionSelect(i)} />
             ))}
           </div>
@@ -959,7 +1060,10 @@ window.HRSimulationApp = function ({ simulationData }) {
         </div>
         <div style={{ fontSize: '11px', fontWeight: 600, color: COLORS.textDim, letterSpacing: '0.5px', marginBottom: '12px', display: 'flex', justifyContent: 'space-between' }}>
           <span>STEP {currentStep + 1} OF {steps.length}</span>
-          <span style={{ color: COLORS.highlight }}>⚡️ {score.toLocaleString()}</span>
+          <div style={{ display: 'flex', gap: '12px' }}>
+            {streak > 1 && <span style={{ color: COLORS.warning, fontWeight: 700 }}>🔥 {streak}</span>}
+            <span style={{ color: COLORS.highlight }}>⚡️ {score.toLocaleString()}</span>
+          </div>
         </div>
         <h3 style={{ fontSize: '20px', fontWeight: 400, color: COLORS.text, lineHeight: 1.35, marginBottom: '16px' }}>{step.instruction_question}</h3>
 
