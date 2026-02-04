@@ -637,9 +637,22 @@ window.HRSimulationApp = function ({ simulationData }) {
   const FeedbackPanel = window.FeedbackPanel;
   const EmailPreview = window.EmailPreview;
 
-  const [currentSimulationIndex, setCurrentSimulationIndex] = useState(0);
-  const [screen, setScreen] = useState('start');
-  const [currentStep, setCurrentStep] = useState(0);
+  // Deep Linking: Parse URL parameters for initial state
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialSimIndex = parseInt(urlParams.get('sim_index') || '0', 10);
+  const initialStepIndex = parseInt(urlParams.get('step_index') || '0', 10);
+
+  // Determine initial screen based on params
+  let initialScreen = 'start';
+  if (urlParams.has('step_index')) {
+    initialScreen = 'step';
+  } else if (urlParams.has('sim_index') && initialSimIndex > 0) {
+    initialScreen = 'start';
+  }
+
+  const [currentSimulationIndex, setCurrentSimulationIndex] = useState(initialSimIndex);
+  const [screen, setScreen] = useState(initialScreen);
+  const [currentStep, setCurrentStep] = useState(initialStepIndex);
   const [isExplainExpanded, setIsExplainExpanded] = useState(false);
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
   const [score, setScore] = useState(0);
@@ -648,7 +661,7 @@ window.HRSimulationApp = function ({ simulationData }) {
     window.scrollTo(0, 0);
   }, [screen, currentStep]);
 
-  // Analytics: Track Screen Views
+  // Analytics: Track Screen Views (Composite)
   React.useEffect(() => {
     let screenName = screen;
     if (screen === 'start') screenName = 'Start';
@@ -657,8 +670,22 @@ window.HRSimulationApp = function ({ simulationData }) {
     if (screen === 'sim_result') screenName = 'Results';
     if (screen === 'feedback') screenName = 'Feedback';
 
-    window.trackEvent('screen_view', { screen_name: screenName });
-  }, [screen, currentStep]);
+    const compositeName = `Sim ${currentSimulationIndex + 1} - ${screenName}`;
+    window.trackEvent('screen_view', { screen_name: compositeName });
+  }, [screen, currentStep, currentSimulationIndex]);
+
+  // Analytics: Track Simulation Completion
+  React.useEffect(() => {
+    if (screen === 'sim_result') {
+      const currentSim = simulations[currentSimulationIndex] || simulationData?.simulations?.[currentSimulationIndex];
+      if (currentSim) {
+        window.trackEvent('simulation_complete', {
+          title: currentSim.simulation_metadata.simulation_title,
+          score: score
+        });
+      }
+    }
+  }, [screen, currentSimulationIndex, score, simulationData]);
 
   const simulations = simulationData?.simulations || [];
   const currentSim = simulations[currentSimulationIndex];
@@ -1003,19 +1030,6 @@ window.HRSimulationApp = function ({ simulationData }) {
       </div>
     );
   }
-
-  // Analytics: Track Simulation Completion
-  React.useEffect(() => {
-    if (screen === 'sim_result') {
-      const currentSim = simulations[currentSimulationIndex];
-      if (currentSim) {
-        window.trackEvent('simulation_complete', {
-          title: currentSim.simulation_metadata.simulation_title,
-          score: score
-        });
-      }
-    }
-  }, [screen, currentSimulationIndex, score, simulations]);
 
   if (screen === 'sim_result') {
     const nextSim = simulations[currentSimulationIndex + 1];
