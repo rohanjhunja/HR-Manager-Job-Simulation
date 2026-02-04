@@ -1,0 +1,1898 @@
+{
+  "path_title": "Talent Executive → HR Manager Readiness Path",
+  "simulations": [
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_01",
+        "simulation_title": "Owning an End-to-End Hiring Closure",
+        "why_this_matters_for_getting_hired": "HR Managers are judged on closing roles fast without compromising hiring quality or trust.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": ["Hiring Closure Proof (HR Manager Level)"],
+          "badges": ["End-to-End Hiring Ownership"],
+          "recruiter_readable_proof": [
+            "Final Shortlist + Risk Notes",
+            "Offer Recommendation Rationale",
+            "Stakeholder Alignment Trail"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "End-to-end hiring ownership",
+          "Balancing speed with quality",
+          "Stakeholder expectation management",
+          "Final hiring recommendations",
+          "Risk and reputation judgment"
+        ]
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Role About to Slip",
+          "workplace_context": {
+            "company_type": "Series B consumer internet startup",
+            "business_state": "Revenue targets depend on this hire"
+          },
+          "crisis_or_decision_trigger": "Hiring manager says the role has been open too long and wants a closure this week.",
+          "central_artefact": "Minimal: shortlist summary view (not full ATS)",
+          "emotional_peak": "Manager questions your control over the funnel"
+        },
+        {
+          "scenario_id": "S2",
+          "scenario_title": "Candidate Leverage & Counterplay",
+          "workplace_context": {
+            "company_type": "High-paying fintech startup",
+            "business_state": "Competition poaching top talent"
+          },
+          "crisis_or_decision_trigger": "Top candidate threatens to drop unless offer is improved; second-best is safer but slower.",
+          "central_artefact": "Offer decision note (approval-ready)",
+          "emotional_peak": "Founder asks: “Are you sure this person is worth it?”"
+        },
+        {
+          "scenario_id": "S3",
+          "scenario_title": "Final Decision Review",
+          "workplace_context": {
+            "company_type": "Global MNC shared services hub",
+            "business_state": "Hiring governance is strict"
+          },
+          "crisis_or_decision_trigger": "Panel wants your final recommendation and a defensible rationale within 10 minutes.",
+          "central_artefact": "One-page hiring recommendation memo",
+          "emotional_peak": "Trust moment: leadership decides how much autonomy you get"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "instruction_question": "Pick what you will tell the hiring manager in the first 30 seconds.",
+          "explain_this_question": "Senior HR is judged on control and clarity under pressure. Your opening sets whether the manager trusts you to close this role. Focus on business constraints, a tight plan, and what you need from the manager. Avoid sounding like you’re ‘working on it’ without a path.",
+          "artefact_interaction_description": "You choose a response in a chat thread that becomes the tone for the week’s hiring push.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Give a direct closure plan with 2 decision checkpoints",
+            "Ask for more time due to pipeline quality concerns",
+            "Share funnel numbers and ask manager to be patient",
+            "Promise closure without stating trade-offs"
+          ],
+          "outcomes": {
+            "correct": "Manager aligns to a closure plan with clear checkpoints",
+            "partially_correct": "Manager agrees but doubts your control",
+            "incorrect": "Manager escalates and bypasses you"
+          },
+          "immediate_feedback": "Impact: leadership confidence and your autonomy to run the funnel.",
+          "skill_signals_observed": ["Stakeholder management", "Hiring ownership"]
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "instruction_question": "Choose the one bottleneck you will fix first to close by Friday.",
+          "explain_this_question": "HR Managers win by removing the highest-impact constraint first. This step tests whether you can diagnose what actually delays closure (availability, calibration, comp, or indecision). The business value is preventing wasted interview loops and late-stage drop-offs.",
+          "artefact_interaction_description": "You pick a bottleneck; the timeline updates and shows what breaks if you pick wrong.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Undefined decision owner at final round",
+            "Interview panel availability gaps",
+            "Comp band ambiguity and approvals",
+            "Candidate engagement / drop risk"
+          ],
+          "outcomes": {
+            "correct": "A realistic closure timeline becomes possible",
+            "partially_correct": "Timeline improves but hidden risk remains",
+            "incorrect": "Timeline collapses mid-week"
+          },
+          "immediate_feedback": "Impact: time-to-hire and candidate experience.",
+          "skill_signals_observed": ["Funnel judgment", "Prioritisation"]
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "instruction_question": "Decide what to do with a ‘strong but risky’ candidate the manager likes.",
+          "explain_this_question": "HR Managers are accountable for risks that show up later. This checks if you can surface concerns without blocking momentum. Business value is preventing a costly mis-hire while keeping hiring velocity.",
+          "artefact_interaction_description": "You choose how to frame the risk in a live huddle prompt.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Proceed but set a targeted risk-check in next round",
+            "Block and demand a safer replacement",
+            "Ignore the risk to meet the deadline",
+            "Ask for more interviews without clarity"
+          ],
+          "outcomes": {
+            "correct": "Risk is tested without stalling closure",
+            "partially_correct": "Risk is noted but not effectively tested",
+            "incorrect": "Risk is hidden or role slips"
+          },
+          "immediate_feedback": "Impact: hiring quality + your credibility when things go wrong.",
+          "skill_signals_observed": ["Risk judgment", "Decision scope control"]
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S1",
+          "instruction_question": "When the manager says ‘I’m confused between two finalists,’ choose your move.",
+          "explain_this_question": "Indecision is a real hiring failure mode. HR Managers must convert ambiguity into a decision by clarifying criteria and forcing trade-offs. Business value is preventing endless rounds and candidate fatigue.",
+          "artefact_interaction_description": "You pick a facilitation move; the finalists’ comparison view changes based on your choice.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Force a decision rubric tied to role outcomes",
+            "Schedule one more general round",
+            "Ask the team to ‘sleep on it’",
+            "Let the manager decide without input"
+          ],
+          "outcomes": {
+            "correct": "Decision becomes defensible and fast",
+            "partially_correct": "Decision happens but confidence is shaky",
+            "incorrect": "Delay triggers candidate drop risk"
+          },
+          "immediate_feedback": "Impact: closure speed and stakeholder trust.",
+          "skill_signals_observed": ["Decision facilitation", "Quality-speed balance"]
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S2",
+          "instruction_question": "Top candidate asks for a 30% bump and a title upgrade. Choose your stance.",
+          "explain_this_question": "HR Managers handle leverage moments that can distort internal equity. This tests whether you can protect business constraints while keeping the candidate engaged. Business value is avoiding precedent that breaks comp structure or morale.",
+          "artefact_interaction_description": "You select a negotiation stance; the candidate’s probability to accept shifts visibly.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Anchor to band; offer non-cash levers with a clear limit",
+            "Approve bump immediately to avoid losing them",
+            "Reject and move to backup candidate",
+            "Delay and ask leadership to decide later"
+          ],
+          "outcomes": {
+            "correct": "Candidate stays engaged without breaking comp logic",
+            "partially_correct": "Candidate stays but internal risk increases",
+            "incorrect": "Candidate walks or leadership loses confidence"
+          },
+          "immediate_feedback": "Impact: offer acceptance + internal equity risk.",
+          "skill_signals_observed": ["Negotiation judgment", "Governance awareness"]
+        },
+        {
+          "step_id": 6,
+          "scenario_id": "S2",
+          "instruction_question": "Pick what you will send the founder for approval in one message.",
+          "explain_this_question": "Senior stakeholders want crisp options, not long context. This tests whether you can package a decision with trade-offs and a recommendation. Business value is faster approvals and fewer rework loops.",
+          "artefact_interaction_description": "You assemble a 4-line approval note (custom) with one-click blocks.",
+          "interaction_type": "custom_compose",
+          "options_inputs": [
+            "Option A: stay in band + add retention levers; recommended",
+            "Option B: exceed band; list equity/morale risk",
+            "Option C: move to backup; list delay cost"
+          ],
+          "outcomes": {
+            "correct": "Approval arrives fast with aligned expectation",
+            "partially_correct": "Approval arrives but questions remain",
+            "incorrect": "Founder doubts your judgment and takes over"
+          },
+          "immediate_feedback": "Impact: leadership trust and speed of closure.",
+          "skill_signals_observed": ["Executive communication", "Recommendation clarity"]
+        },
+        {
+          "step_id": 7,
+          "scenario_id": "S2",
+          "instruction_question": "Candidate asks for 48 hours; manager wants same-day closure. Choose the trade-off.",
+          "explain_this_question": "HR Managers balance candidate experience and business urgency. This checks if you can protect acceptance probability without signaling weakness. Business value is closure without damaging employer reputation.",
+          "artefact_interaction_description": "You choose a timeline stance; the candidate temperature meter shifts.",
+          "interaction_type": "trade_off_meters",
+          "options_inputs": [
+            "Hold firm: 24-hour deadline with support",
+            "Give 48 hours with a check-in and backup activation",
+            "Give unlimited time to avoid losing them",
+            "Threaten withdrawal immediately"
+          ],
+          "outcomes": {
+            "correct": "Acceptance odds stay high and manager stays aligned",
+            "partially_correct": "Acceptance odds okay but manager trust drops",
+            "incorrect": "Candidate drops or manager escalates"
+          },
+          "immediate_feedback": "Impact: acceptance probability and stakeholder alignment.",
+          "skill_signals_observed": ["Expectation management", "Pressure handling"]
+        },
+        {
+          "step_id": 8,
+          "scenario_id": "S3",
+          "instruction_question": "In the panel review, pick your final recommendation.",
+          "explain_this_question": "This is the HR Manager moment: you own the call. The decision must reflect role outcomes, risk, and business timing. Business value is choosing the candidate that performs, not the one that ‘interviewed well.’",
+          "artefact_interaction_description": "You choose one finalist; the panel questions change based on your choice.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Recommend Candidate A with one explicit risk and mitigation",
+            "Recommend Candidate B due to safer profile",
+            "Recommend no-hire and reopen pipeline",
+            "Ask panel to decide without recommendation"
+          ],
+          "outcomes": {
+            "correct": "Panel accepts your recommendation and trusts your mitigation plan",
+            "partially_correct": "Panel agrees but flags weak rationale",
+            "incorrect": "Panel challenges your readiness for HR Manager scope"
+          },
+          "immediate_feedback": "Impact: your credibility as a decision owner.",
+          "skill_signals_observed": ["Final recommendation", "Accountability"]
+        },
+        {
+          "step_id": 9,
+          "scenario_id": "S3",
+          "instruction_question": "Choose how you will document the decision in one page.",
+          "explain_this_question": "At high-paying orgs, decisions must be auditable and repeatable. This tests whether you can document what mattered and what risk you accepted. Business value is fewer disputes later and faster future closures.",
+          "artefact_interaction_description": "You pick a structure for the one-page memo; it auto-generates a proof artifact.",
+          "interaction_type": "ordering",
+          "options_inputs": [
+            "Role outcomes → evidence → risks → mitigation → final call",
+            "Candidate story → strengths → weaknesses → conclusion",
+            "Interview feedback dump → conclusion",
+            "Comp details first → conclusion"
+          ],
+          "outcomes": {
+            "correct": "Memo reads like HR Manager-level decision proof",
+            "partially_correct": "Memo is usable but not leadership-grade",
+            "incorrect": "Memo looks like recruiter notes, not ownership"
+          },
+          "immediate_feedback": "Impact: audit safety and leadership confidence.",
+          "skill_signals_observed": ["Documentation quality", "Business framing"]
+        },
+        {
+          "step_id": 10,
+          "scenario_id": "S3",
+          "instruction_question": "When the manager hints they will blame HR if the hire fails, choose your response.",
+          "explain_this_question": "HR Managers protect partnership without accepting unfair blame. This tests boundary-setting and shared ownership framing. Business value is stable stakeholder relationships and clear accountability lines.",
+          "artefact_interaction_description": "You respond in a meeting transcript; trust score updates based on tone and content.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Reaffirm shared ownership + restate risks and mitigations",
+            "Accept full responsibility to keep peace",
+            "Challenge the manager aggressively",
+            "Change topic to avoid conflict"
+          ],
+          "outcomes": {
+            "correct": "Partnership stays strong with clear accountability",
+            "partially_correct": "Partnership stays but accountability is muddy",
+            "incorrect": "Trust breaks or you become a scapegoat"
+          },
+          "immediate_feedback": "Impact: long-term trust and your role scope.",
+          "skill_signals_observed": ["Leadership communication", "Accountability framing"]
+        },
+        {
+          "step_id": 11,
+          "scenario_id": "S3",
+          "instruction_question": "Pick the single follow-up action you will do after acceptance to reduce early failure risk.",
+          "explain_this_question": "Great HR Managers don’t stop at acceptance—they protect early success. This tests whether you think beyond hiring into onboarding risk. Business value is reducing early attrition and performance escalations.",
+          "artefact_interaction_description": "You choose an action; a 30-day risk reduction checklist is generated as proof.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Align manager + new hire on 30-day outcomes and support",
+            "Do nothing; onboarding is the manager’s job",
+            "Send generic welcome email only",
+            "Ask for weekly updates without structure"
+          ],
+          "outcomes": {
+            "correct": "Early risk reduces and manager trust increases",
+            "partially_correct": "Some risk reduction but not systematic",
+            "incorrect": "Performance risk grows unseen"
+          },
+          "immediate_feedback": "Impact: early performance outcomes and HR credibility.",
+          "skill_signals_observed": ["End-to-end ownership", "Risk prevention"]
+        },
+        {
+          "step_id": 12,
+          "scenario_id": "S3",
+          "instruction_question": "A senior leader asks: ‘Would you hire this person again?’ Choose your answer style.",
+          "explain_this_question": "Leadership tests your conviction and learning loop. This checks whether you can answer with evidence and humility. Business value is proving judgment maturity, not perfection.",
+          "artefact_interaction_description": "You pick an answer style; your ‘judgment signal’ score updates based on defensibility.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Yes—with evidence and the one risk I’d watch",
+            "Yes—because the manager wanted them",
+            "No—because hiring is always risky",
+            "Unsure—need more time to decide"
+          ],
+          "outcomes": {
+            "correct": "You sound like a decision owner with learning orientation",
+            "partially_correct": "Answer is acceptable but not leadership-grade",
+            "incorrect": "You appear unaccountable or overly dependent"
+          },
+          "immediate_feedback": "Impact: leadership confidence in your HR Manager readiness.",
+          "skill_signals_observed": ["Judgment communication", "Ownership"]
+        },
+        {
+          "step_id": 13,
+          "scenario_id": "S2",
+          "instruction_question": "Backup candidate is now available. Decide whether to keep them warm.",
+          "explain_this_question": "HR Managers manage pipeline risk without creating ethical problems. This tests whether you can keep optionality while staying fair and brand-safe. Business value is preventing a total reset if the top candidate drops.",
+          "artefact_interaction_description": "You choose a message approach; the backup candidate engagement changes.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Be transparent about timeline and keep them engaged",
+            "Overpromise to keep them on hold",
+            "Ghost them until you need them",
+            "Reject them immediately to avoid complexity"
+          ],
+          "outcomes": {
+            "correct": "Optionality preserved without brand damage",
+            "partially_correct": "Optionality preserved but brand risk rises",
+            "incorrect": "Backup drops or complains publicly"
+          },
+          "immediate_feedback": "Impact: closure resilience and employer reputation.",
+          "skill_signals_observed": ["Ethical judgment", "Pipeline risk management"]
+        },
+        {
+          "step_id": 14,
+          "scenario_id": "S1",
+          "instruction_question": "A teammate suggests skipping reference checks to save time. Choose your response.",
+          "explain_this_question": "High-paying companies don’t forgive preventable misses. This tests whether you protect risk gates without stalling closure. Business value is preventing costly mis-hires and reputational damage.",
+          "artefact_interaction_description": "You decide on a risk gate; the timeline and risk exposure update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Do a targeted reference check on the single biggest risk",
+            "Skip all checks to close faster",
+            "Delay closure to do full checks",
+            "Let the manager decide"
+          ],
+          "outcomes": {
+            "correct": "Risk gate maintained without killing speed",
+            "partially_correct": "Risk gate exists but is weak or slow",
+            "incorrect": "Risk exposure spikes or closure fails"
+          },
+          "immediate_feedback": "Impact: legal/brand risk and hiring quality credibility.",
+          "skill_signals_observed": ["Risk governance", "Speed-quality balance"]
+        },
+        {
+          "step_id": 15,
+          "scenario_id": "S3",
+          "instruction_question": "Finalize the recruiter-readable proof you’ll leave behind from this closure.",
+          "explain_this_question": "This simulation must end with evidence of HR Manager-level ownership. This checks if your work produces an auditable trail a recruiter or manager can trust. Business value is repeatability and confidence in your decisions under constraints.",
+          "artefact_interaction_description": "The system compiles your decisions into a ‘Hiring Closure Proof’ packet; you choose what to include.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Final recommendation + risk/mitigation",
+            "Stakeholder alignment checkpoints",
+            "Decision timeline and trade-offs",
+            "Only final candidate name"
+          ],
+          "outcomes": {
+            "correct": "Proof packet demonstrates HR Manager readiness",
+            "partially_correct": "Proof exists but feels recruiter-level",
+            "incorrect": "No credible proof of ownership"
+          },
+          "immediate_feedback": "Impact: whether you look promotion-ready or just execution-focused.",
+          "skill_signals_observed": ["Proof-building", "Accountability"]
+        }
+      ],
+      "end_state": "This is exactly the kind of situation HR Managers are judged on.",
+      "hook_to_next_simulation": "Your hiring judgment leads managers to involve you in post-hire performance concerns."
+    },
+
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_02",
+        "simulation_title": "Handling a New Hire Performance Concern",
+        "why_this_matters_for_getting_hired": "HR Managers are trusted to handle early performance risk without breaking morale or trust.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": ["Early Performance Risk Handling Proof"],
+          "badges": ["Performance Concern Triage"],
+          "recruiter_readable_proof": [
+            "Manager Advisory Trail",
+            "PIP-Lite Decision Note",
+            "Documentation & Risk Safeguards"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Performance issue diagnosis",
+          "Manager advisory under pressure",
+          "Empathy with accountability",
+          "Decision documentation",
+          "Risk and fairness judgment"
+        ]
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Manager Escalation on Week 3",
+          "workplace_context": {
+            "company_type": "Product-led startup",
+            "business_state": "High workload; low patience for slow ramp"
+          },
+          "crisis_or_decision_trigger": "Manager says the new hire is ‘not working out’ and wants them replaced fast.",
+          "central_artefact": "Minimal: escalation message + 3 bullet examples",
+          "emotional_peak": "Manager threatens to lose trust in HR hiring"
+        },
+        {
+          "scenario_id": "S2",
+          "scenario_title": "Employee Pushback & Morale Risk",
+          "workplace_context": {
+            "company_type": "Scaling ops team",
+            "business_state": "Team morale is fragile"
+          },
+          "crisis_or_decision_trigger": "Employee says expectations were unclear and alleges bias/unfair treatment.",
+          "central_artefact": "Performance conversation notes (structured)",
+          "emotional_peak": "Risk of grievance if mishandled"
+        },
+        {
+          "scenario_id": "S3",
+          "scenario_title": "Decision: Support Plan or Exit Path",
+          "workplace_context": {
+            "company_type": "MNC with governance",
+            "business_state": "Documentation must be audit-safe"
+          },
+          "crisis_or_decision_trigger": "Leadership asks what you’re doing to prevent repeat hiring failures.",
+          "central_artefact": "PIP-Lite plan (one page) or exit recommendation note",
+          "emotional_peak": "Accountability moment with leadership"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "instruction_question": "Pick your first question to the manager when they say ‘this hire is failing.’",
+          "explain_this_question": "HR Managers don’t accept vague complaints—they force specificity fast. This tests whether you can separate performance facts from frustration. Business value is preventing unfair action and protecting manager credibility and team stability.",
+          "artefact_interaction_description": "You choose a question in a call script; the manager’s details either sharpen or stay vague.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "What outcomes are missed, and what evidence do we have?",
+            "Is the employee trying hard enough?",
+            "Do you want to terminate them immediately?",
+            "Should I start hiring a replacement today?"
+          ],
+          "outcomes": {
+            "correct": "You get measurable examples and a clearer problem",
+            "partially_correct": "You get some info but not decision-grade",
+            "incorrect": "You reinforce venting and lose diagnostic control"
+          },
+          "immediate_feedback": "Impact: fairness, speed of resolution, and manager trust.",
+          "skill_signals_observed": ["Diagnosis", "Manager advisory"]
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "instruction_question": "Choose your stance when the manager says ‘I don’t have time to coach.’",
+          "explain_this_question": "HR Managers protect performance standards without demanding unrealistic manager effort. This tests whether you can design a workable intervention that respects business pressure. Value is preventing churn while maintaining accountability.",
+          "artefact_interaction_description": "You pick a stance; the manager’s cooperation level updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Propose a short support plan with minimal manager load",
+            "Agree and move straight to termination prep",
+            "Ask for a full coaching plan and weekly reports",
+            "Avoid the issue and promise to ‘handle it’"
+          ],
+          "outcomes": {
+            "correct": "You keep accountability with a realistic plan",
+            "partially_correct": "Plan exists but manager commitment is weak",
+            "incorrect": "You escalate conflict or create legal risk"
+          },
+          "immediate_feedback": "Impact: resolution speed and legal safety.",
+          "skill_signals_observed": ["Pragmatic planning", "Pressure handling"]
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "instruction_question": "Select what you will check before any formal step is taken.",
+          "explain_this_question": "High-paying orgs expect HR to be risk-aware and consistent. This tests whether you confirm role clarity, onboarding quality, and expectation setting. Business value is preventing avoidable escalations and protecting employer brand internally.",
+          "artefact_interaction_description": "You choose checks; the simulation reveals hidden causes if selected.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Role expectations communicated at join",
+            "Onboarding and access provided on time",
+            "Manager’s weekly feedback history",
+            "Peer feedback on collaboration"
+          ],
+          "outcomes": {
+            "correct": "You uncover root causes and reduce unfair action risk",
+            "partially_correct": "You get partial context",
+            "incorrect": "You act on incomplete information"
+          },
+          "immediate_feedback": "Impact: decision defensibility and morale stability.",
+          "skill_signals_observed": ["Risk awareness", "Evidence gathering"]
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S2",
+          "instruction_question": "In the first employee conversation, choose your opening line.",
+          "explain_this_question": "HR Managers must be firm and fair at the same time. This tests whether you can set a professional tone that reduces defensiveness while making expectations clear. Business value is preserving dignity and keeping the situation controllable.",
+          "artefact_interaction_description": "You pick an opening; employee trust changes and the conversation path branches.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "State the concern + invite their perspective + set goal of clarity",
+            "Warn them they may be terminated",
+            "Side with the manager to push compliance",
+            "Keep it vague to avoid discomfort"
+          ],
+          "outcomes": {
+            "correct": "Employee engages without feeling ambushed",
+            "partially_correct": "Employee engages but remains guarded",
+            "incorrect": "Employee escalates or shuts down"
+          },
+          "immediate_feedback": "Impact: grievance risk and speed to resolution.",
+          "skill_signals_observed": ["Empathy + accountability", "Communication"]
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S2",
+          "instruction_question": "Employee alleges bias. Choose your immediate action.",
+          "explain_this_question": "This is a high-risk HR moment. HR Managers must protect confidentiality, create a fair process, and prevent retaliatory behavior. Business value is legal safety and trust in HR’s integrity.",
+          "artefact_interaction_description": "You choose a response; risk exposure meter updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Acknowledge, document, and initiate a fair review process",
+            "Dismiss it as an excuse",
+            "Tell the manager immediately with details",
+            "End the conversation and escalate to legal without facts"
+          ],
+          "outcomes": {
+            "correct": "You reduce risk while keeping process fair",
+            "partially_correct": "Risk reduced but trust suffers",
+            "incorrect": "Risk spikes (legal/morale) and credibility drops"
+          },
+          "immediate_feedback": "Impact: legal exposure and internal trust.",
+          "skill_signals_observed": ["Confidentiality", "Risk management"]
+        },
+        {
+          "step_id": 6,
+          "scenario_id": "S2",
+          "instruction_question": "Choose a ‘PIP-lite’ structure that is realistic under workload pressure.",
+          "explain_this_question": "HR Managers design interventions that can actually be executed. This tests whether your plan is measurable, time-bound, and fair without being bureaucratic. Business value is faster course correction and fewer drawn-out conflicts.",
+          "artefact_interaction_description": "You assemble a 3-part plan card; it becomes part of the final proof.",
+          "interaction_type": "ordering",
+          "options_inputs": [
+            "Define 2 outcomes + evidence",
+            "Set a 2-week checkpoint",
+            "Define support + owner responsibilities",
+            "Define consequences if unmet"
+          ],
+          "outcomes": {
+            "correct": "Plan is actionable and defensible",
+            "partially_correct": "Plan exists but is vague or heavy",
+            "incorrect": "Plan is unworkable or unfair"
+          },
+          "immediate_feedback": "Impact: outcome improvement probability and fairness.",
+          "skill_signals_observed": ["Intervention design", "Fairness judgment"]
+        },
+        {
+          "step_id": 7,
+          "scenario_id": "S3",
+          "instruction_question": "Leadership asks: ‘Is this a hiring miss or a management failure?’ Choose your answer approach.",
+          "explain_this_question": "HR Managers don’t scapegoat—they diagnose systemically and decide responsibly. This tests whether you can communicate nuance without sounding indecisive. Business value is preventing repeat failures and protecting relationships.",
+          "artefact_interaction_description": "You pick an answer style; leadership confidence changes.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Present evidence: expectations + support + behavior gaps",
+            "Blame hiring and promise a replacement",
+            "Blame the manager’s coaching",
+            "Refuse to answer until more data appears"
+          ],
+          "outcomes": {
+            "correct": "Leadership trusts your judgment and plan",
+            "partially_correct": "Leadership accepts but flags weak ownership",
+            "incorrect": "Leadership doubts your HR Manager readiness"
+          },
+          "immediate_feedback": "Impact: trust and future scope of responsibility.",
+          "skill_signals_observed": ["Executive communication", "Systems thinking"]
+        },
+        {
+          "step_id": 8,
+          "scenario_id": "S3",
+          "instruction_question": "Choose whether to recommend: extend support, role change, or exit path.",
+          "explain_this_question": "This is a true HR Manager decision with real consequences. You must weigh business needs, fairness, and risk. Business value is avoiding prolonged underperformance and preventing wrongful action.",
+          "artefact_interaction_description": "You choose a path; the case outcome plays forward with consequences.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Extend support with tighter outcomes and a final checkpoint",
+            "Recommend a role adjustment with clear scope change",
+            "Recommend exit with documented basis and respectful process",
+            "Avoid decision and ask the manager to ‘handle it’"
+          ],
+          "outcomes": {
+            "correct": "Decision is defensible and aligned to business reality",
+            "partially_correct": "Decision works but leaves risk gaps",
+            "incorrect": "Decision triggers morale/legal risk or business drag"
+          },
+          "immediate_feedback": "Impact: team morale, risk exposure, and performance stability.",
+          "skill_signals_observed": ["Decision accountability", "Risk management"]
+        },
+        {
+          "step_id": 9,
+          "scenario_id": "S3",
+          "instruction_question": "Pick what you will document to make this case audit-safe.",
+          "explain_this_question": "High-paying companies demand documentation consistency. This tests whether you capture the right elements without over-collecting sensitive info. Business value is reducing disputes and protecting fairness.",
+          "artefact_interaction_description": "You select documentation items; a ‘case file’ proof is generated.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Outcome expectations and timelines",
+            "Evidence of feedback and support offered",
+            "Employee response and acknowledgment",
+            "Irrelevant personal details"
+          ],
+          "outcomes": {
+            "correct": "File is defensible and respectful",
+            "partially_correct": "File exists but has gaps",
+            "incorrect": "File is risky or biased"
+          },
+          "immediate_feedback": "Impact: legal safety and trust in HR process.",
+          "skill_signals_observed": ["Documentation", "Fairness judgment"]
+        },
+        {
+          "step_id": 10,
+          "scenario_id": "S2",
+          "instruction_question": "Manager asks to ‘make it quiet.’ Choose your boundary.",
+          "explain_this_question": "HR Managers must protect confidentiality without hiding risk. This tests ethical judgment and process integrity. Business value is preventing retaliation, rumor spirals, and compliance failures.",
+          "artefact_interaction_description": "You respond in a manager chat; retaliation risk indicator updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Set confidentiality boundaries and define who must know",
+            "Agree to keep everything off-record",
+            "Tell the manager to handle it however they want",
+            "Broadcast it to the team to be transparent"
+          ],
+          "outcomes": {
+            "correct": "Confidentiality maintained with process integrity",
+            "partially_correct": "Confidentiality okay but process is weak",
+            "incorrect": "Retaliation/rumor risk spikes"
+          },
+          "immediate_feedback": "Impact: trust, safety, and compliance risk.",
+          "skill_signals_observed": ["Confidentiality", "Boundary-setting"]
+        },
+        {
+          "step_id": 11,
+          "scenario_id": "S1",
+          "instruction_question": "Decide what you will tell the manager about your hiring process learning.",
+          "explain_this_question": "HR Managers convert failures into system improvements without defensiveness. This tests whether you can propose one concrete improvement that reduces repeats. Business value is stronger hiring quality over time.",
+          "artefact_interaction_description": "You choose a ‘process improvement’ note; it becomes part of the proof.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Add one targeted assessment for the missing skill",
+            "Increase rounds for all future hires",
+            "Stop hiring from that channel entirely",
+            "No change; this was bad luck"
+          ],
+          "outcomes": {
+            "correct": "You show mature ownership and improvement thinking",
+            "partially_correct": "Change is vague or heavy",
+            "incorrect": "You appear non-learning or reactive"
+          },
+          "immediate_feedback": "Impact: leadership confidence in your maturity.",
+          "skill_signals_observed": ["Ownership", "Improvement judgment"]
+        },
+        {
+          "step_id": 12,
+          "scenario_id": "S3",
+          "instruction_question": "Choose the message you’ll send to close the loop with the employee (regardless of outcome).",
+          "explain_this_question": "HR Managers are judged on dignity, clarity, and risk control. This tests whether you can communicate outcomes without triggering further escalation. Business value is stable morale and reduced grievance risk.",
+          "artefact_interaction_description": "You pick a closing message; tone and clarity scores update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Clear outcome + next step + support + timeline",
+            "Short cold message with only decision",
+            "Overly apologetic message without clarity",
+            "No message; let manager handle it"
+          ],
+          "outcomes": {
+            "correct": "Outcome is clear and emotionally stable",
+            "partially_correct": "Message okay but could trigger confusion",
+            "incorrect": "Message increases escalation risk"
+          },
+          "immediate_feedback": "Impact: trust, morale, and risk containment.",
+          "skill_signals_observed": ["Communication", "Risk containment"]
+        },
+        {
+          "step_id": 13,
+          "scenario_id": "S2",
+          "instruction_question": "Employee requests an exception (more time, different metrics). Decide what you’ll allow.",
+          "explain_this_question": "HR Managers balance compassion and standards. This tests whether you can make a fair exception without setting a precedent that breaks consistency. Business value is fairness perception and performance standards protection.",
+          "artefact_interaction_description": "You choose an adjustment; consistency meter updates across the team.",
+          "interaction_type": "trade_off_meters",
+          "options_inputs": [
+            "Allow a limited adjustment with the same end outcome",
+            "Allow full adjustment and lower the bar",
+            "Reject any adjustment regardless of context",
+            "Avoid decision and delay"
+          ],
+          "outcomes": {
+            "correct": "Fairness and standards both protected",
+            "partially_correct": "Either fairness or standards wobble",
+            "incorrect": "Precedent risk or grievance risk spikes"
+          },
+          "immediate_feedback": "Impact: consistency, morale, and performance outcomes.",
+          "skill_signals_observed": ["Fairness", "Governance judgment"]
+        },
+        {
+          "step_id": 14,
+          "scenario_id": "S3",
+          "instruction_question": "Finalize the recruiter-readable proof for this case.",
+          "explain_this_question": "This simulation must end with evidence of HR Manager-level handling: decision basis, fairness, and risk control. Business value is repeatability, audit safety, and trust in HR’s judgment under pressure.",
+          "artefact_interaction_description": "The system compiles a case file; you select the final elements to include.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Manager advisory trail + key facts",
+            "Support plan or exit rationale",
+            "Confidentiality safeguards",
+            "Personal opinions and unverified claims"
+          ],
+          "outcomes": {
+            "correct": "Proof is credible and leadership-grade",
+            "partially_correct": "Proof exists but has gaps or noise",
+            "incorrect": "Proof is risky or non-defensible"
+          },
+          "immediate_feedback": "Impact: whether you appear HR Manager-ready in interviews.",
+          "skill_signals_observed": ["Documentation", "Accountability"]
+        },
+        {
+          "step_id": 15,
+          "scenario_id": "S1",
+          "instruction_question": "Manager asks: ‘Would you have hired them again?’ Choose your answer style.",
+          "explain_this_question": "Leaders test judgment maturity through retrospective accountability. This checks whether you can learn without blame and still own the outcome. Business value is improved hiring and stable partnerships.",
+          "artefact_interaction_description": "You choose an answer; leadership trust shifts based on defensibility and ownership.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Own the outcome + state one change you’d make next time",
+            "Blame the manager’s onboarding",
+            "Blame the candidate entirely",
+            "Avoid answering"
+          ],
+          "outcomes": {
+            "correct": "You demonstrate HR Manager-level ownership",
+            "partially_correct": "Acceptable but not strong",
+            "incorrect": "You appear defensive or unaccountable"
+          },
+          "immediate_feedback": "Impact: trust and future scope of responsibilities.",
+          "skill_signals_observed": ["Ownership", "Executive communication"]
+        }
+      ],
+      "end_state": "This is exactly the kind of situation HR Managers are judged on.",
+      "hook_to_next_simulation": "Performance discussions begin to expose broader team-level issues."
+    },
+
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_03",
+        "simulation_title": "Managing Employee Grievance Escalation",
+        "why_this_matters_for_getting_hired": "HR Managers are trusted with sensitive escalations that affect retention, safety, and legal risk.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": ["Grievance Handling Proof (Trust & Compliance)"],
+          "badges": ["Confidential Escalation Handler"],
+          "recruiter_readable_proof": [
+            "Grievance Intake Summary",
+            "Investigation Decision Trail",
+            "Outcome Communication Record"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Grievance triage under pressure",
+          "Confidentiality and fairness",
+          "Policy-consistent judgment",
+          "Clear communication of outcomes",
+          "Risk containment"
+        ]
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Formal Grievance Filed",
+          "workplace_context": {
+            "company_type": "High-growth startup",
+            "business_state": "Retention pressure and rumor risk"
+          },
+          "crisis_or_decision_trigger": "Employee files a formal complaint involving a manager; rumors are spreading.",
+          "central_artefact": "Grievance intake form (minimal, structured)",
+          "emotional_peak": "Employee demands immediate action and confidentiality"
+        },
+        {
+          "scenario_id": "S2",
+          "scenario_title": "Conflicting Accounts & Pressure",
+          "workplace_context": {
+            "company_type": "Matrix org team",
+            "business_state": "Delivery deadline; leadership impatient"
+          },
+          "crisis_or_decision_trigger": "Accused manager claims it’s a ‘misunderstanding’ and asks to ‘resolve quietly.’",
+          "central_artefact": "Investigation plan checklist (one screen)",
+          "emotional_peak": "Leadership asks for an update in 24 hours"
+        },
+        {
+          "scenario_id": "S3",
+          "scenario_title": "Outcome & Communication",
+          "workplace_context": {
+            "company_type": "MNC-style governance",
+            "business_state": "Documentation and fairness scrutiny"
+          },
+          "crisis_or_decision_trigger": "You must decide an outcome and communicate it without exposing sensitive details.",
+          "central_artefact": "Outcome letter template (short, policy-safe)",
+          "emotional_peak": "Trust moment: complainant decides whether HR is credible"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "instruction_question": "Choose your first response to the complainant who says: ‘I don’t feel safe.’",
+          "explain_this_question": "HR Managers are judged on safety, empathy, and process control in the first minute. This tests whether you stabilize the situation without making promises you can’t keep. Business value is preventing escalation, attrition, and reputational damage.",
+          "artefact_interaction_description": "You pick a response in a secure chat; the complainant’s trust stabilizes or drops.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Acknowledge safety + explain next steps + confirm confidentiality limits",
+            "Promise immediate punishment for the accused",
+            "Ask them to calm down and send details later",
+            "Tell them to talk to their manager first"
+          ],
+          "outcomes": {
+            "correct": "Trust stabilizes and process begins safely",
+            "partially_correct": "Trust okay but expectations get fuzzy",
+            "incorrect": "Escalation risk increases immediately"
+          },
+          "immediate_feedback": "Impact: trust, safety perception, and escalation risk.",
+          "skill_signals_observed": ["Empathy", "Process control"]
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "instruction_question": "Decide what immediate protective action (if any) you will take today.",
+          "explain_this_question": "HR Managers prevent harm while ensuring fairness. This tests whether you can choose a protective action that doesn’t look like a verdict. Business value is reducing risk without creating legal exposure.",
+          "artefact_interaction_description": "You choose a protective move; risk and fairness meters update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Implement a temporary separation measure with neutral framing",
+            "Move the complainant only to avoid inconvenience",
+            "Suspend the accused immediately without facts",
+            "Do nothing until investigation finishes"
+          ],
+          "outcomes": {
+            "correct": "Risk reduces while fairness stays intact",
+            "partially_correct": "Risk reduces but fairness perception wobbles",
+            "incorrect": "Risk or legal exposure spikes"
+          },
+          "immediate_feedback": "Impact: safety, fairness, and legal risk.",
+          "skill_signals_observed": ["Risk judgment", "Fairness"]
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "instruction_question": "Pick the minimum information you must capture in intake right now.",
+          "explain_this_question": "Good HR Managers capture decision-grade facts without over-collecting sensitive or biased details. Business value is a clean, defensible record and faster resolution.",
+          "artefact_interaction_description": "You select intake fields; the intake summary auto-generates.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "What happened + when + where",
+            "Who was present / witnesses",
+            "Impact on work and safety",
+            "Speculation about motives"
+          ],
+          "outcomes": {
+            "correct": "Intake is clean, specific, and usable",
+            "partially_correct": "Some gaps remain",
+            "incorrect": "Intake becomes risky or unusable"
+          },
+          "immediate_feedback": "Impact: investigation quality and audit safety.",
+          "skill_signals_observed": ["Documentation", "Judgment"]
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S2",
+          "instruction_question": "Accused manager asks: ‘Tell me who complained.’ Choose your boundary.",
+          "explain_this_question": "Confidentiality is a core trust requirement for HR Managers. This tests whether you protect identity while still running a fair process. Business value is preventing retaliation and keeping employees willing to report issues.",
+          "artefact_interaction_description": "You respond in a call transcript; retaliation risk updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Refuse disclosure; explain process and their rights",
+            "Reveal the name to keep the manager calm",
+            "Hint the identity indirectly",
+            "Avoid answering and end the call"
+          ],
+          "outcomes": {
+            "correct": "Confidentiality preserved; process credibility increases",
+            "partially_correct": "Confidentiality mostly preserved but relationship strains",
+            "incorrect": "Retaliation/legal risk spikes"
+          },
+          "immediate_feedback": "Impact: safety, trust, and legal exposure.",
+          "skill_signals_observed": ["Confidentiality", "Boundary-setting"]
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S2",
+          "instruction_question": "Leadership wants an update in 24 hours. Choose what you will report.",
+          "explain_this_question": "HR Managers keep leadership informed without compromising confidentiality or pre-judging. Business value is confidence in HR control while protecting the integrity of the process.",
+          "artefact_interaction_description": "You select an update format; leadership confidence shifts.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Process update + timeline + immediate risk controls",
+            "Full allegation details and identities",
+            "No update until everything is proven",
+            "Opinionated conclusion without evidence"
+          ],
+          "outcomes": {
+            "correct": "Leadership stays aligned and risk is controlled",
+            "partially_correct": "Leadership aligned but expects more detail",
+            "incorrect": "You compromise confidentiality or look out of control"
+          },
+          "immediate_feedback": "Impact: leadership trust and process integrity.",
+          "skill_signals_observed": ["Stakeholder management", "Risk containment"]
+        },
+        {
+          "step_id": 6,
+          "scenario_id": "S2",
+          "instruction_question": "Choose the investigation scope that is fair and fast.",
+          "explain_this_question": "HR Managers decide scope under time pressure: too small looks biased, too big becomes slow and chaotic. Business value is credible resolution without operational paralysis.",
+          "artefact_interaction_description": "You pick a scope; resolution time and credibility score update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Interview complainant + accused + key witnesses only",
+            "Interview the entire team to be safe",
+            "Only interview the accused manager",
+            "Push it to ‘informal resolution’ immediately"
+          ],
+          "outcomes": {
+            "correct": "Scope is credible and efficient",
+            "partially_correct": "Scope works but adds delay or risk",
+            "incorrect": "Scope is biased or ineffective"
+          },
+          "immediate_feedback": "Impact: credibility and time-to-resolution.",
+          "skill_signals_observed": ["Process design", "Fairness judgment"]
+        },
+        {
+          "step_id": 7,
+          "scenario_id": "S2",
+          "instruction_question": "A witness offers hearsay only. Decide how you treat it.",
+          "explain_this_question": "HR Managers separate evidence from rumor. This checks whether you record it carefully without letting it drive decisions. Business value is audit safety and avoiding defamation or bias.",
+          "artefact_interaction_description": "You choose how to record the statement; risk score updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Record as unverified and seek corroboration",
+            "Treat as proof and escalate immediately",
+            "Ignore completely",
+            "Share it broadly for transparency"
+          ],
+          "outcomes": {
+            "correct": "You protect fairness and evidence standards",
+            "partially_correct": "You lose some useful signal or time",
+            "incorrect": "You create bias or legal risk"
+          },
+          "immediate_feedback": "Impact: fairness, legal safety, and decision quality.",
+          "skill_signals_observed": ["Evidence judgment", "Risk management"]
+        },
+        {
+          "step_id": 8,
+          "scenario_id": "S3",
+          "instruction_question": "Choose the most defensible outcome type given mixed evidence.",
+          "explain_this_question": "HR Managers often decide under ambiguity. This tests whether you can choose an outcome that protects safety and fairness without overreaching. Business value is minimizing risk while keeping trust in HR.",
+          "artefact_interaction_description": "You pick an outcome; the simulation shows likely reactions and risk exposure.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Corrective action + monitoring + leadership alignment",
+            "No action and close case immediately",
+            "Severe punishment without substantiation",
+            "Ask the complainant to withdraw"
+          ],
+          "outcomes": {
+            "correct": "Outcome is proportionate and defensible",
+            "partially_correct": "Outcome works but leaves trust gaps",
+            "incorrect": "Outcome triggers escalation or legal exposure"
+          },
+          "immediate_feedback": "Impact: trust, retention risk, and compliance exposure.",
+          "skill_signals_observed": ["Proportional judgment", "Risk containment"]
+        },
+        {
+          "step_id": 9,
+          "scenario_id": "S3",
+          "instruction_question": "Pick the single sentence that must be in your outcome communication to the complainant.",
+          "explain_this_question": "Complainants judge HR by clarity and respect—even when details can’t be shared. This tests whether you communicate closure without violating confidentiality. Business value is reduced repeat escalation and improved trust.",
+          "artefact_interaction_description": "You select a line; complainant trust shifts based on perceived fairness.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "We acted based on our process and will monitor to prevent recurrence",
+            "We cannot tell you anything at all",
+            "Your complaint was not credible",
+            "The manager has been punished (details included)"
+          ],
+          "outcomes": {
+            "correct": "Trust improves without confidentiality breach",
+            "partially_correct": "Trust neutral; some frustration remains",
+            "incorrect": "Trust collapses or confidentiality breaks"
+          },
+          "immediate_feedback": "Impact: trust and future reporting willingness.",
+          "skill_signals_observed": ["Communication", "Confidentiality judgment"]
+        },
+        {
+          "step_id": 10,
+          "scenario_id": "S3",
+          "instruction_question": "Decide what you will tell the accused manager after the outcome.",
+          "explain_this_question": "HR Managers communicate outcomes in a way that reduces retaliation and ensures behavior change. Business value is preventing repeat issues and stabilizing the team.",
+          "artefact_interaction_description": "You choose a manager message; retaliation and compliance risk meters update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Outcome + expectations + monitoring boundaries",
+            "Humiliate them to set an example",
+            "Say nothing and hope it resolves",
+            "Share complainant identity for ‘closure’"
+          ],
+          "outcomes": {
+            "correct": "Behavior expectations set; risk decreases",
+            "partially_correct": "Some improvement but risk remains",
+            "incorrect": "Retaliation/compliance risk spikes"
+          },
+          "immediate_feedback": "Impact: team safety and organizational risk.",
+          "skill_signals_observed": ["Boundary-setting", "Risk containment"]
+        },
+        {
+          "step_id": 11,
+          "scenario_id": "S2",
+          "instruction_question": "Choose the one thing you will NOT do during the investigation.",
+          "explain_this_question": "This checks whether you avoid common HR failure modes: gossip, premature conclusions, and retaliation risks. Business value is keeping the process credible and safe.",
+          "artefact_interaction_description": "You select a ‘do-not’ rule; the simulation penalizes integrity breaches later if missed.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Share allegations widely to be transparent",
+            "Pre-judge based on seniority",
+            "Allow direct confrontation between parties",
+            "Skip documentation to move faster"
+          ],
+          "outcomes": {
+            "correct": "You protect integrity and reduce risk",
+            "partially_correct": "Some risk remains due to gaps",
+            "incorrect": "Case becomes unsafe or non-defensible"
+          },
+          "immediate_feedback": "Impact: trust and compliance exposure.",
+          "skill_signals_observed": ["Process integrity", "Risk management"]
+        },
+        {
+          "step_id": 12,
+          "scenario_id": "S1",
+          "instruction_question": "Rumors spread in the team. Choose your response strategy.",
+          "explain_this_question": "HR Managers protect privacy while stabilizing the org. This tests whether you can calm the system without revealing details. Business value is avoiding attrition spikes and reputational damage.",
+          "artefact_interaction_description": "You choose a strategy; rumor intensity and trust metrics update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Issue a neutral reminder about respectful behavior and channels",
+            "Deny everything publicly",
+            "Reveal details to stop speculation",
+            "Ignore and hope it fades"
+          ],
+          "outcomes": {
+            "correct": "Rumor intensity reduces without confidentiality breach",
+            "partially_correct": "Rumors slow but remain",
+            "incorrect": "Rumors intensify or trust drops"
+          },
+          "immediate_feedback": "Impact: morale and retention risk.",
+          "skill_signals_observed": ["Org stabilization", "Confidential communication"]
+        },
+        {
+          "step_id": 13,
+          "scenario_id": "S3",
+          "instruction_question": "Select what must be included in the recruiter-readable proof packet.",
+          "explain_this_question": "Your proof must show HR Manager-grade judgment: confidentiality, fairness, and defensible decisions under pressure. Business value is audit safety and trust in HR handling.",
+          "artefact_interaction_description": "A proof packet compiles; you choose the final pieces to keep it clean and defensible.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Intake summary (facts only)",
+            "Decision trail (process + timeline)",
+            "Outcome communication record",
+            "Personal opinions and rumors"
+          ],
+          "outcomes": {
+            "correct": "Packet is credible, safe, and leadership-grade",
+            "partially_correct": "Packet is usable but missing key safeguards",
+            "incorrect": "Packet is risky or non-defensible"
+          },
+          "immediate_feedback": "Impact: how you would be judged in interviews and on-the-job.",
+          "skill_signals_observed": ["Proof-building", "Documentation integrity"]
+        },
+        {
+          "step_id": 14,
+          "scenario_id": "S2",
+          "instruction_question": "Leadership asks: ‘Can we close this today?’ Choose your answer.",
+          "explain_this_question": "HR Managers resist premature closure when risk is high, but also avoid unnecessary delay. This tests judgment on timing and defensibility. Business value is fast resolution without integrity loss.",
+          "artefact_interaction_description": "You choose a timeline stance; risk and trust meters update.",
+          "interaction_type": "trade_off_meters",
+          "options_inputs": [
+            "Close only if key evidence threshold is met today",
+            "Close immediately to stop distraction",
+            "Delay indefinitely to be safe",
+            "Push it back to the manager to decide"
+          ],
+          "outcomes": {
+            "correct": "Timing is defensible and risk-controlled",
+            "partially_correct": "Timing works but creates some dissatisfaction",
+            "incorrect": "Closure triggers escalation or legal risk"
+          },
+          "immediate_feedback": "Impact: risk exposure and leadership trust.",
+          "skill_signals_observed": ["Timing judgment", "Risk containment"]
+        },
+        {
+          "step_id": 15,
+          "scenario_id": "S3",
+          "instruction_question": "Finalize your one-line reflection: what did you protect most in this case?",
+          "explain_this_question": "At HR Manager level, leaders look for what you prioritize under ambiguity: safety, fairness, speed, reputation. This tests whether your priorities align with high-performing org expectations. Business value is consistent judgment patterns.",
+          "artefact_interaction_description": "You pick a priority; it becomes the final line of your proof packet.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Safety and fairness with defensible process",
+            "Speed above all",
+            "Manager comfort above all",
+            "Avoiding conflict above all"
+          ],
+          "outcomes": {
+            "correct": "You signal HR Manager-grade priorities",
+            "partially_correct": "Neutral signal",
+            "incorrect": "You signal risky priorities"
+          },
+          "immediate_feedback": "Impact: trust and readiness signal.",
+          "skill_signals_observed": ["Judgment priorities", "Accountability"]
+        }
+      ],
+      "end_state": "This is exactly the kind of situation HR Managers are judged on.",
+      "hook_to_next_simulation": "Leadership now evaluates your readiness to handle org-wide people decisions."
+    },
+
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_04",
+        "simulation_title": "Supporting a Team Restructuring Decision",
+        "why_this_matters_for_getting_hired": "HR Managers are judged on executing change without breaking morale, trust, or employer brand.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": ["Restructuring Support Proof (Org-Scale)"],
+          "badges": ["Change Communication Support"],
+          "recruiter_readable_proof": [
+            "Change Risk & Stakeholder Plan",
+            "Manager Talking Points",
+            "Announcement Decision Trail"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Change communication support",
+          "Workforce impact judgment",
+          "Manager advisory during change",
+          "Risk-aware execution",
+          "Trust stabilization"
+        ]
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Restructure Triggered Overnight",
+          "workplace_context": {
+            "company_type": "Startup shifting strategy",
+            "business_state": "Cost pressure + new priorities"
+          },
+          "crisis_or_decision_trigger": "Leadership decides to merge two teams; roles will change and some may be redundant.",
+          "central_artefact": "Minimal: org-change brief (short)",
+          "emotional_peak": "Leaders demand speed; HR worries about fallout"
+        },
+        {
+          "scenario_id": "S2",
+          "scenario_title": "Manager Panic & Team Anxiety",
+          "workplace_context": {
+            "company_type": "High-performing team",
+            "business_state": "Delivery deadline in 2 weeks"
+          },
+          "crisis_or_decision_trigger": "Managers ask what they can say; team rumors start immediately.",
+          "central_artefact": "Manager talking points (one screen)",
+          "emotional_peak": "Trust moment: employees decide if leadership is credible"
+        },
+        {
+          "scenario_id": "S3",
+          "scenario_title": "Announcement & Aftershock",
+          "workplace_context": {
+            "company_type": "MNC-style governance",
+            "business_state": "Brand risk if mishandled"
+          },
+          "crisis_or_decision_trigger": "You must structure the announcement and stabilize the first 72 hours.",
+          "central_artefact": "Announcement plan checklist (sparse)",
+          "emotional_peak": "Employee reaction escalation"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "instruction_question": "Leadership says: ‘We announce tomorrow.’ Choose your first pushback or alignment move.",
+          "explain_this_question": "HR Managers don’t block change—they make it survivable. This tests whether you secure the minimum clarity needed to avoid chaos: who is affected, what changes, and what support exists. Business value is preventing rumor spirals and attrition spikes.",
+          "artefact_interaction_description": "You pick a stance in a leadership huddle; clarity and risk meters update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Align to speed but demand 3 minimum clarifications now",
+            "Agree immediately with no conditions",
+            "Block the announcement entirely",
+            "Ask to ‘revisit later’ without a plan"
+          ],
+          "outcomes": {
+            "correct": "You gain minimum clarity and protect credibility",
+            "partially_correct": "Some clarity, but gaps remain",
+            "incorrect": "Chaos risk increases dramatically"
+          },
+          "immediate_feedback": "Impact: execution control and trust preservation.",
+          "skill_signals_observed": ["Change leadership", "Risk-aware execution"]
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "instruction_question": "Choose the single biggest people risk you will manage first.",
+          "explain_this_question": "Restructures fail due to predictable risks: rumor-driven attrition, manager inconsistency, perceived unfairness. HR Managers pick the highest-impact risk and control it fast. Business value is maintaining delivery and retention.",
+          "artefact_interaction_description": "You select a risk; the simulation shows ripple effects across morale and delivery.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Manager inconsistency in messaging",
+            "Key talent flight risk",
+            "Social media employer brand risk",
+            "Temporary productivity drop"
+          ],
+          "outcomes": {
+            "correct": "Risk is controlled and trust stabilizes",
+            "partially_correct": "Risk controlled but another spikes",
+            "incorrect": "Multiple risks explode simultaneously"
+          },
+          "immediate_feedback": "Impact: retention and delivery stability.",
+          "skill_signals_observed": ["Risk prioritisation", "Org stabilization"]
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "instruction_question": "Decide what you will NOT say in the announcement to avoid future legal/brand risk.",
+          "explain_this_question": "Under pressure, leaders over-promise or overshare. HR Managers keep language safe and truthful. Business value is preventing credibility collapse and future disputes.",
+          "artefact_interaction_description": "You choose a language rule; announcement risk score updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "No promises about ‘no layoffs’ unless guaranteed",
+            "No mention of timelines to avoid panic",
+            "No empathy to stay professional",
+            "No details at all to prevent questions"
+          ],
+          "outcomes": {
+            "correct": "Language stays credible and defensible",
+            "partially_correct": "Language okay but invites mistrust",
+            "incorrect": "Language creates future backlash"
+          },
+          "immediate_feedback": "Impact: credibility and legal/brand exposure.",
+          "skill_signals_observed": ["Communication judgment", "Risk control"]
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S2",
+          "instruction_question": "Managers ask: ‘What do we tell our teams right now?’ Choose your guidance.",
+          "explain_this_question": "HR Managers prevent mixed messaging. This tests whether you give managers a safe, consistent script that reduces panic and rumor. Business value is trust stabilization and reduced attrition risk.",
+          "artefact_interaction_description": "You pick a talking points set; managers’ consistency score updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Acknowledge change + timeline + where questions go",
+            "Tell teams nothing until announcement",
+            "Let each manager decide how to explain",
+            "Share confidential details to show transparency"
+          ],
+          "outcomes": {
+            "correct": "Managers stay aligned and teams feel steadier",
+            "partially_correct": "Some alignment but rumor risk remains",
+            "incorrect": "Messaging fragments and panic spreads"
+          },
+          "immediate_feedback": "Impact: trust and retention risk.",
+          "skill_signals_observed": ["Manager advisory", "Communication control"]
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S2",
+          "instruction_question": "A top performer says they’ll leave if their role changes. Choose your move.",
+          "explain_this_question": "Change moments trigger flight risk. HR Managers balance fairness and retention by offering clarity, role path, and bounded flexibility. Business value is preventing losing critical talent while staying consistent.",
+          "artefact_interaction_description": "You choose a retention move; flight risk probability updates.",
+          "interaction_type": "trade_off_meters",
+          "options_inputs": [
+            "Offer clarity + role path + a decision date",
+            "Promise anything to keep them",
+            "Tell them to accept or leave",
+            "Ignore and focus on the announcement"
+          ],
+          "outcomes": {
+            "correct": "Flight risk reduces without breaking fairness",
+            "partially_correct": "Risk reduces but fairness perception drops",
+            "incorrect": "Talent exits and morale drops"
+          },
+          "immediate_feedback": "Impact: retention and fairness perception.",
+          "skill_signals_observed": ["Retention judgment", "Fairness"]
+        },
+        {
+          "step_id": 6,
+          "scenario_id": "S2",
+          "instruction_question": "Choose how you will prepare managers for hard questions (pay, scope, reporting).",
+          "explain_this_question": "HR Managers are tested on how well they equip managers. This checks whether you prioritize the questions that cause panic and attrition. Business value is fewer escalations and faster stabilization.",
+          "artefact_interaction_description": "You order the top 4 manager FAQs; a talking-points pack is generated as proof.",
+          "interaction_type": "ordering",
+          "options_inputs": [
+            "Role scope changes",
+            "Reporting lines and decision authority",
+            "Comp/level implications",
+            "Timeline and next check-in"
+          ],
+          "outcomes": {
+            "correct": "Managers are prepared and consistent",
+            "partially_correct": "Managers prepared but miss a key hotspot",
+            "incorrect": "Managers get blindsided and escalate"
+          },
+          "immediate_feedback": "Impact: stability in first 72 hours.",
+          "skill_signals_observed": ["Manager enablement", "Crisis comms"]
+        },
+        {
+          "step_id": 7,
+          "scenario_id": "S3",
+          "instruction_question": "Announcement is live; internal chat explodes. Choose your first stabilizing action.",
+          "explain_this_question": "This is a live-fire moment: HR Managers must reduce uncertainty and prevent rumor spirals. Business value is protecting morale, retention, and delivery continuity.",
+          "artefact_interaction_description": "You pick a stabilizing action; rumor intensity and trust metrics update immediately.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Set a clear Q&A window and escalation channel",
+            "Shut down questions to stop distraction",
+            "Let managers handle it individually",
+            "Ignore the chatter"
+          ],
+          "outcomes": {
+            "correct": "Noise reduces and trust steadies",
+            "partially_correct": "Noise reduces slowly",
+            "incorrect": "Panic spreads and escalations multiply"
+          },
+          "immediate_feedback": "Impact: morale stability and leadership confidence.",
+          "skill_signals_observed": ["Org stabilization", "Crisis handling"]
+        },
+        {
+          "step_id": 8,
+          "scenario_id": "S3",
+          "instruction_question": "An employee asks: ‘Is my job safe?’ Choose your response style.",
+          "explain_this_question": "HR Managers must be honest without creating panic. This tests whether you communicate uncertainty responsibly. Business value is credibility and reduced attrition fueled by misinformation.",
+          "artefact_interaction_description": "You pick a response; employee trust and escalation risk update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Share what’s known + what’s not + next update timing",
+            "Guarantee safety to calm them",
+            "Say ‘no comment’",
+            "Tell them to ask their manager only"
+          ],
+          "outcomes": {
+            "correct": "Trust increases without over-promising",
+            "partially_correct": "Trust neutral; anxiety remains",
+            "incorrect": "Trust collapses or panic increases"
+          },
+          "immediate_feedback": "Impact: trust and retention risk.",
+          "skill_signals_observed": ["Communication judgment", "Trust management"]
+        },
+        {
+          "step_id": 9,
+          "scenario_id": "S3",
+          "instruction_question": "Choose your plan for the first 72 hours after restructure announcement.",
+          "explain_this_question": "HR Managers stabilize the system with visible check-ins, manager alignment, and risk monitoring. Business value is avoiding attrition spikes and ensuring delivery continuity.",
+          "artefact_interaction_description": "You select 3 actions; a 72-hour stabilization plan is generated as proof.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Daily manager sync with consistent talking points",
+            "Office hours / Q&A session",
+            "Flight-risk watchlist and outreach",
+            "Silence to let things ‘settle’"
+          ],
+          "outcomes": {
+            "correct": "Stabilization improves and leadership trust grows",
+            "partially_correct": "Some stabilization but gaps remain",
+            "incorrect": "Chaos persists and attrition risk spikes"
+          },
+          "immediate_feedback": "Impact: morale and leadership confidence.",
+          "skill_signals_observed": ["Execution planning", "Org stabilization"]
+        },
+        {
+          "step_id": 10,
+          "scenario_id": "S1",
+          "instruction_question": "Leadership wants to ‘move fast’ on redundancies. Choose your risk gate.",
+          "explain_this_question": "HR Managers protect the org from impulsive decisions. This tests whether you insist on minimum fairness and documentation without blocking business needs. Business value is reducing dispute risk and brand damage.",
+          "artefact_interaction_description": "You pick a gate; compliance and brand risk meters update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Define decision criteria and review ownership before actions",
+            "Let leaders decide case-by-case without structure",
+            "Delay everything indefinitely",
+            "Announce redundancies before manager alignment"
+          ],
+          "outcomes": {
+            "correct": "Speed stays but risk is controlled",
+            "partially_correct": "Speed okay but fairness perception dips",
+            "incorrect": "Risk spikes and trust collapses"
+          },
+          "immediate_feedback": "Impact: legal/brand exposure and internal trust.",
+          "skill_signals_observed": ["Risk governance", "Fairness"]
+        },
+        {
+          "step_id": 11,
+          "scenario_id": "S2",
+          "instruction_question": "A manager says: ‘I’ll tell my team the real reason.’ Choose your boundary.",
+          "explain_this_question": "HR Managers prevent inconsistent narratives that cause panic, resentment, and legal risk. Business value is message discipline and trust preservation.",
+          "artefact_interaction_description": "You respond; manager alignment score updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Set a clear boundary: approved narrative + escalation path",
+            "Let them speak freely for authenticity",
+            "Threaten disciplinary action immediately",
+            "Ignore it"
+          ],
+          "outcomes": {
+            "correct": "Messaging stays consistent and safe",
+            "partially_correct": "Messaging mostly consistent but shaky",
+            "incorrect": "Messaging fractures and risk increases"
+          },
+          "immediate_feedback": "Impact: trust and brand risk.",
+          "skill_signals_observed": ["Manager advisory", "Communication governance"]
+        },
+        {
+          "step_id": 12,
+          "scenario_id": "S3",
+          "instruction_question": "Finalize the recruiter-readable proof: what did you personally own?",
+          "explain_this_question": "You must show HR Manager-level ownership of change execution: risk identification, manager enablement, and stabilization plan. Business value is evidence you can handle org-scale people decisions.",
+          "artefact_interaction_description": "Proof packet compiles; you select the final items to include.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Risk plan + stabilization plan",
+            "Manager talking points pack",
+            "Leadership alignment decisions",
+            "Only announcement copy"
+          ],
+          "outcomes": {
+            "correct": "Proof signals org-scale readiness",
+            "partially_correct": "Proof exists but feels tactical",
+            "incorrect": "No credible ownership signal"
+          },
+          "immediate_feedback": "Impact: readiness signal for HR Manager roles.",
+          "skill_signals_observed": ["Proof-building", "Accountability"]
+        },
+        {
+          "step_id": 13,
+          "scenario_id": "S3",
+          "instruction_question": "Employee posts a vague negative comment on social media. Choose your response.",
+          "explain_this_question": "This tests brand-risk judgment: move too hard and you escalate, move too soft and it spreads. Business value is containing reputation risk while respecting employee rights.",
+          "artefact_interaction_description": "You select a response strategy; brand risk and trust metrics update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Internal stabilization first + remind of policy neutrally",
+            "Threaten legal action publicly",
+            "Ignore completely",
+            "Force employees to post positive messages"
+          ],
+          "outcomes": {
+            "correct": "Brand risk contained without overreach",
+            "partially_correct": "Contained but creates internal resentment",
+            "incorrect": "Brand risk escalates"
+          },
+          "immediate_feedback": "Impact: brand risk and internal trust.",
+          "skill_signals_observed": ["Crisis judgment", "Policy-safe action"]
+        },
+        {
+          "step_id": 14,
+          "scenario_id": "S1",
+          "instruction_question": "Leadership asks: ‘What did we underestimate?’ Choose your answer.",
+          "explain_this_question": "HR Managers must be honest and constructive—showing learning and preventing repeats. Business value is better future change execution and less morale damage.",
+          "artefact_interaction_description": "You pick a learning; leadership confidence shifts based on maturity.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Manager readiness and messaging alignment",
+            "Employees being too emotional",
+            "Nothing; it was perfect",
+            "The internet being unfair"
+          ],
+          "outcomes": {
+            "correct": "You show HR Manager maturity and learning",
+            "partially_correct": "Neutral learning signal",
+            "incorrect": "You appear unaware or dismissive"
+          },
+          "immediate_feedback": "Impact: credibility and future scope.",
+          "skill_signals_observed": ["Learning ownership", "Leadership communication"]
+        },
+        {
+          "step_id": 15,
+          "scenario_id": "S3",
+          "instruction_question": "Choose the one principle you held during the restructure.",
+          "explain_this_question": "Leaders judge your judgment pattern. This tests whether your priorities align with high-performing org expectations: credibility, fairness, and risk control under speed. Business value is stable trust during turbulence.",
+          "artefact_interaction_description": "You select a principle; it becomes the closing line in your proof packet.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Clarity and fairness under speed",
+            "Speed above all",
+            "Silence to reduce conflict",
+            "Optimizing for leadership optics only"
+          ],
+          "outcomes": {
+            "correct": "You signal HR Manager-grade priorities",
+            "partially_correct": "Neutral signal",
+            "incorrect": "You signal risky priorities"
+          },
+          "immediate_feedback": "Impact: readiness signal.",
+          "skill_signals_observed": ["Judgment priorities", "Accountability"]
+        }
+      ],
+      "end_state": "This is exactly the kind of situation HR Managers are judged on.",
+      "hook_to_next_simulation": "Restructuring exposes compliance and documentation gaps."
+    },
+
+    {
+      "simulation_metadata": {
+        "simulation_id": "SIM_05",
+        "simulation_title": "Addressing a Compliance Red Flag",
+        "why_this_matters_for_getting_hired": "HR Managers are hired to prevent compliance failures before they become legal or public crises.",
+        "estimated_time": "15 minutes",
+        "deliverables_unlockable": {
+          "certifications": ["Compliance Risk Containment Proof"],
+          "badges": ["Audit-Ready HR Operator"],
+          "recruiter_readable_proof": [
+            "Compliance Red-Flag Triage Log",
+            "Stakeholder Coordination Trail",
+            "Audit-Safe Closure Note"
+          ]
+        },
+        "primary_role_competencies_evaluated": [
+          "Compliance risk identification",
+          "Coordination with legal/leadership",
+          "Closing documentation gaps fast",
+          "Reducing audit exposure",
+          "Calm judgment under escalation"
+        ]
+      },
+      "scenario_breakdown": [
+        {
+          "scenario_id": "S1",
+          "scenario_title": "Audit Threat Appears",
+          "workplace_context": {
+            "company_type": "VC-backed startup",
+            "business_state": "Preparing for due diligence / audit"
+          },
+          "crisis_or_decision_trigger": "A red flag appears: missing documentation for multiple contractors and leave records inconsistencies.",
+          "central_artefact": "Minimal: compliance tracker (sparse, not heavy)",
+          "emotional_peak": "CFO escalates: ‘This can kill the deal.’"
+        },
+        {
+          "scenario_id": "S2",
+          "scenario_title": "Legal vs Business Tension",
+          "workplace_context": {
+            "company_type": "Cross-functional org",
+            "business_state": "Leaders want fast fixes"
+          },
+          "crisis_or_decision_trigger": "Leaders suggest backfilling documents ‘quietly’ without drawing attention.",
+          "central_artefact": "Decision note: what can/can’t be done",
+          "emotional_peak": "Trust moment: legal asks if HR is hiding risk"
+        },
+        {
+          "scenario_id": "S3",
+          "scenario_title": "Closure Under Deadline",
+          "workplace_context": {
+            "company_type": "MNC-style compliance expectations",
+            "business_state": "Strict audit trail needed"
+          },
+          "crisis_or_decision_trigger": "You have 6 hours to create a defensible plan and close the highest risk gaps.",
+          "central_artefact": "Audit-safe closure note + priority list",
+          "emotional_peak": "Leadership review: ‘Are we safe now?’"
+        }
+      ],
+      "step_level_design": [
+        {
+          "step_id": 1,
+          "scenario_id": "S1",
+          "instruction_question": "CFO pings: ‘We have a compliance issue.’ Choose your first move in the next 10 minutes.",
+          "explain_this_question": "HR Managers must stabilize risk quickly: confirm scope, stop further exposure, and set a plan. This tests whether you respond with urgency and control rather than panic. Business value is preventing deal risk and legal escalation.",
+          "artefact_interaction_description": "You pick a first move; risk containment meter updates instantly.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Confirm scope + freeze risky actions + set a 2-hour triage plan",
+            "Ask for more details and wait",
+            "Tell CFO it’s not HR’s issue",
+            "Start fixing documents without checking scope"
+          ],
+          "outcomes": {
+            "correct": "Risk stabilizes and leadership confidence rises",
+            "partially_correct": "Some progress but risk remains unclear",
+            "incorrect": "Risk spreads or leadership escalates over you"
+          },
+          "immediate_feedback": "Impact: audit exposure and leadership confidence.",
+          "skill_signals_observed": ["Crisis control", "Risk prioritisation"]
+        },
+        {
+          "step_id": 2,
+          "scenario_id": "S1",
+          "instruction_question": "Choose the highest legal/financial exposure to address first.",
+          "explain_this_question": "Not all compliance gaps are equal. HR Managers prioritize based on exposure, not convenience. Business value is reducing the probability of penalties, disputes, or deal delays.",
+          "artefact_interaction_description": "You pick a risk category; the exposure score updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Misclassification / contractor documentation gaps",
+            "Minor formatting issues in records",
+            "Outdated policy document wording",
+            "Missing team event approvals"
+          ],
+          "outcomes": {
+            "correct": "Exposure reduces materially",
+            "partially_correct": "Some exposure reduces but not the main risk",
+            "incorrect": "You burn time on low-impact work"
+          },
+          "immediate_feedback": "Impact: legal exposure and time effectiveness.",
+          "skill_signals_observed": ["Risk prioritisation", "Judgment"]
+        },
+        {
+          "step_id": 3,
+          "scenario_id": "S1",
+          "instruction_question": "Pick what you will ask Legal for (one message only).",
+          "explain_this_question": "HR Managers coordinate tightly with Legal: clarify what’s permissible, what must be documented, and what not to do. Business value is avoiding ‘fixes’ that create bigger liabilities.",
+          "artefact_interaction_description": "You choose the content of a one-message legal ping; legal responsiveness and alignment update.",
+          "interaction_type": "custom_compose",
+          "options_inputs": [
+            "Confirm permissible remediation actions + required audit trail",
+            "Ask legal to ‘handle everything’",
+            "Ask if we can quietly backdate documents",
+            "Ask for a generic compliance checklist"
+          ],
+          "outcomes": {
+            "correct": "Legal aligns quickly with clear guardrails",
+            "partially_correct": "Legal responds but with uncertainty",
+            "incorrect": "Legal flags high concern and escalates"
+          },
+          "immediate_feedback": "Impact: speed and safety of remediation.",
+          "skill_signals_observed": ["Stakeholder coordination", "Risk containment"]
+        },
+        {
+          "step_id": 4,
+          "scenario_id": "S2",
+          "instruction_question": "Leader suggests: ‘Just backfill paperwork so it looks clean.’ Choose your stance.",
+          "explain_this_question": "This tests integrity under pressure. HR Managers must protect the company by refusing risky shortcuts while still offering a path forward. Business value is avoiding fraud-like exposure and preserving trust with Legal and auditors.",
+          "artefact_interaction_description": "You choose a stance; integrity and risk meters update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Refuse backdating; propose a compliant remediation path",
+            "Agree and do it quietly",
+            "Avoid answering and delay",
+            "Blame legal to shut the conversation"
+          ],
+          "outcomes": {
+            "correct": "You keep integrity and offer a workable plan",
+            "partially_correct": "You avoid wrongdoing but look indecisive",
+            "incorrect": "You increase legal/audit exposure"
+          },
+          "immediate_feedback": "Impact: audit risk and cross-functional trust.",
+          "skill_signals_observed": ["Ethical judgment", "Pressure handling"]
+        },
+        {
+          "step_id": 5,
+          "scenario_id": "S2",
+          "instruction_question": "Decide how much you disclose to the CEO right now.",
+          "explain_this_question": "Executives need the truth with a plan, not panic. HR Managers disclose material risk and show containment. Business value is preventing surprise escalations and maintaining credibility.",
+          "artefact_interaction_description": "You choose a disclosure level; CEO confidence shifts.",
+          "interaction_type": "trade_off_meters",
+          "options_inputs": [
+            "Disclose material risk + containment plan + next update time",
+            "Disclose nothing until fixed",
+            "Over-disclose every detail without a plan",
+            "Send a vague note: ‘We’re looking into it’"
+          ],
+          "outcomes": {
+            "correct": "CEO trusts your control and plan",
+            "partially_correct": "CEO uneasy but not alarmed",
+            "incorrect": "CEO escalates or loses trust"
+          },
+          "immediate_feedback": "Impact: leadership trust and crisis stability.",
+          "skill_signals_observed": ["Executive communication", "Crisis control"]
+        },
+        {
+          "step_id": 6,
+          "scenario_id": "S3",
+          "instruction_question": "Choose the ‘6-hour plan’ structure to close the top risks.",
+          "explain_this_question": "HR Managers operate like incident commanders in compliance crises: prioritize, assign owners, and create an audit trail. Business value is rapid risk reduction with defensible documentation.",
+          "artefact_interaction_description": "You order the plan blocks; a time-boxed action plan is generated as proof.",
+          "interaction_type": "ordering",
+          "options_inputs": [
+            "Triage scope + exposure ranking",
+            "Immediate containment actions",
+            "Remediation owners + deadlines",
+            "Audit-safe documentation trail"
+          ],
+          "outcomes": {
+            "correct": "Plan is executable and audit-safe",
+            "partially_correct": "Plan executable but documentation weak",
+            "incorrect": "Plan chaotic or unsafe"
+          },
+          "immediate_feedback": "Impact: speed of closure and audit defensibility.",
+          "skill_signals_observed": ["Operational planning", "Audit mindset"]
+        },
+        {
+          "step_id": 7,
+          "scenario_id": "S1",
+          "instruction_question": "You find multiple missing contractor agreements. Choose what you do first.",
+          "explain_this_question": "HR Managers avoid creating new liabilities while fixing gaps. This tests whether you freeze risky engagements, gather facts, and remediate properly. Business value is reducing ongoing exposure.",
+          "artefact_interaction_description": "You choose a move; exposure and operational disruption meters update.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Freeze new contractor starts + validate existing terms + route for compliant agreements",
+            "Ask teams to ignore until after audit",
+            "Terminate contractors immediately",
+            "Backdate agreements without review"
+          ],
+          "outcomes": {
+            "correct": "Exposure reduces with controlled disruption",
+            "partially_correct": "Exposure reduces but disruption is high",
+            "incorrect": "Exposure increases or trust collapses"
+          },
+          "immediate_feedback": "Impact: legal exposure and business continuity.",
+          "skill_signals_observed": ["Risk control", "Coordination"]
+        },
+        {
+          "step_id": 8,
+          "scenario_id": "S3",
+          "instruction_question": "Select the minimum ‘audit trail’ items you must produce today.",
+          "explain_this_question": "Auditors care about evidence of a controlled process. This tests whether you produce the right artifacts without over-complicating. Business value is audit readiness and reduced penalty risk.",
+          "artefact_interaction_description": "You select audit trail items; a closure note builds in real time.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Exposure assessment + prioritization logic",
+            "Owner assignments and completion timestamps",
+            "Legal guidance summary (non-sensitive)",
+            "Random policy rewrites unrelated to the red flag"
+          ],
+          "outcomes": {
+            "correct": "Audit trail is defensible",
+            "partially_correct": "Audit trail exists but has gaps",
+            "incorrect": "Audit trail is weak or suspicious"
+          },
+          "immediate_feedback": "Impact: audit outcome probability and leadership trust.",
+          "skill_signals_observed": ["Documentation", "Audit defensibility"]
+        },
+        {
+          "step_id": 9,
+          "scenario_id": "S2",
+          "instruction_question": "A department head pushes back: ‘HR is slowing us down.’ Choose your reply.",
+          "explain_this_question": "HR Managers maintain momentum while enforcing guardrails. This tests whether you can communicate risk in business terms and offer a fast path forward. Business value is compliance without operational paralysis.",
+          "artefact_interaction_description": "You respond; cooperation level updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Explain risk + offer a compliant fast-track process",
+            "Threaten them with punishment",
+            "Back off to keep them happy",
+            "Blame Legal"
+          ],
+          "outcomes": {
+            "correct": "Cooperation improves and risk stays controlled",
+            "partially_correct": "Cooperation okay but tension remains",
+            "incorrect": "They bypass HR; exposure increases"
+          },
+          "immediate_feedback": "Impact: compliance adherence and stakeholder trust.",
+          "skill_signals_observed": ["Influence", "Business framing"]
+        },
+        {
+          "step_id": 10,
+          "scenario_id": "S3",
+          "instruction_question": "Leadership asks: ‘Are we safe now?’ Choose your answer style.",
+          "explain_this_question": "HR Managers answer with evidence and residual risk, not false certainty. Business value is credibility and correct expectations.",
+          "artefact_interaction_description": "You choose an answer; leadership confidence adjusts based on transparency and control.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "We reduced top exposure; here’s what’s closed and what remains",
+            "Yes, everything is perfect now",
+            "We don’t know; we’ll see later",
+            "It’s not HR’s responsibility"
+          ],
+          "outcomes": {
+            "correct": "Leadership trusts your control and realism",
+            "partially_correct": "Leadership okay but wants more clarity",
+            "incorrect": "Leadership distrusts you or escalates"
+          },
+          "immediate_feedback": "Impact: leadership confidence and ongoing support.",
+          "skill_signals_observed": ["Executive communication", "Risk transparency"]
+        },
+        {
+          "step_id": 11,
+          "scenario_id": "S1",
+          "instruction_question": "Choose one preventive control you will implement next week to avoid repeat red flags.",
+          "explain_this_question": "Great HR Managers prevent repeats with lightweight controls. This tests whether you choose a control with high impact and low overhead. Business value is ongoing audit readiness and reduced crisis frequency.",
+          "artefact_interaction_description": "You select a control; future exposure risk drops on a preview meter.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Contractor onboarding gate: no start without minimum docs",
+            "Add five approvals for every hire",
+            "Hope teams remember next time",
+            "Move everything to manual tracking"
+          ],
+          "outcomes": {
+            "correct": "Repeat risk reduces meaningfully",
+            "partially_correct": "Some improvement but heavy overhead",
+            "incorrect": "Repeat risk stays high"
+          },
+          "immediate_feedback": "Impact: long-term compliance stability.",
+          "skill_signals_observed": ["Preventive thinking", "Operational design"]
+        },
+        {
+          "step_id": 12,
+          "scenario_id": "S2",
+          "instruction_question": "Legal asks whether any remediation could be interpreted as misrepresentation. Choose your response.",
+          "explain_this_question": "This checks whether you prioritize integrity and transparency. Business value is avoiding severe legal consequences and preserving trust with legal stakeholders.",
+          "artefact_interaction_description": "You respond; legal trust score updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Confirm we will not backdate; document remediation honestly",
+            "Suggest we ‘make it look clean’",
+            "Avoid answering",
+            "Ask legal to decide everything"
+          ],
+          "outcomes": {
+            "correct": "Legal trust increases; risk decreases",
+            "partially_correct": "Legal trust neutral; needs more clarity",
+            "incorrect": "Legal escalates due to integrity concern"
+          },
+          "immediate_feedback": "Impact: legal risk and cross-functional trust.",
+          "skill_signals_observed": ["Integrity", "Stakeholder coordination"]
+        },
+        {
+          "step_id": 13,
+          "scenario_id": "S3",
+          "instruction_question": "Finalize the recruiter-readable proof packet for this compliance incident.",
+          "explain_this_question": "Your proof must show HR Manager-grade incident handling: fast triage, safe decisions, audit trail, and cross-functional coordination. Business value is demonstrating you can protect the business under compliance pressure.",
+          "artefact_interaction_description": "A packet compiles; you choose what stays for maximum defensibility and clarity.",
+          "interaction_type": "selection",
+          "options_inputs": [
+            "Triage log + exposure ranking",
+            "Owner plan + closure timestamps",
+            "Audit-safe closure note",
+            "Sensitive personal data unrelated to the issue"
+          ],
+          "outcomes": {
+            "correct": "Packet is leadership-grade and audit-safe",
+            "partially_correct": "Packet is okay but missing key evidence",
+            "incorrect": "Packet is risky or non-defensible"
+          },
+          "immediate_feedback": "Impact: interview-readiness and trust signal.",
+          "skill_signals_observed": ["Proof-building", "Audit mindset"]
+        },
+        {
+          "step_id": 14,
+          "scenario_id": "S1",
+          "instruction_question": "CFO asks: ‘How did this happen?’ Choose your answer.",
+          "explain_this_question": "HR Managers answer with root-cause thinking and ownership, not blame. Business value is preventing repeats and restoring confidence.",
+          "artefact_interaction_description": "You choose a root-cause framing; CFO confidence updates.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Process gap + control fix + timeline",
+            "Blame one person",
+            "Blame the CFO for not funding HR tools",
+            "Say ‘not sure’"
+          ],
+          "outcomes": {
+            "correct": "Confidence increases due to ownership and prevention",
+            "partially_correct": "Neutral confidence",
+            "incorrect": "Confidence drops; escalation risk increases"
+          },
+          "immediate_feedback": "Impact: leadership confidence and future autonomy.",
+          "skill_signals_observed": ["Ownership", "Systems thinking"]
+        },
+        {
+          "step_id": 15,
+          "scenario_id": "S3",
+          "instruction_question": "Choose what you protected most in this incident.",
+          "explain_this_question": "Leaders judge your judgment pattern. This tests whether your priority aligns with high-performing org expectations: integrity, audit safety, and speed with guardrails. Business value is predictable, trustworthy HR leadership.",
+          "artefact_interaction_description": "You choose a principle; it becomes the closing line of your proof packet.",
+          "interaction_type": "MCQ",
+          "options_inputs": [
+            "Integrity + audit defensibility under speed",
+            "Speed above all",
+            "Optics above truth",
+            "Avoiding conflict above risk control"
+          ],
+          "outcomes": {
+            "correct": "You signal HR Manager-ready priorities",
+            "partially_correct": "Neutral signal",
+            "incorrect": "You signal risky priorities"
+          },
+          "immediate_feedback": "Impact: readiness signal.",
+          "skill_signals_observed": ["Judgment priorities", "Accountability"]
+        }
+      ],
+      "end_state": "This is exactly the kind of situation HR Managers are judged on.",
+      "hook_to_next_simulation": "Leadership begins to involve you in people strategy discussions."
+    }
+  ]
+}
