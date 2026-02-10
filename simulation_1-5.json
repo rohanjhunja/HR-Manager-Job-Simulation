@@ -1,7 +1,13 @@
 {
   "path_metadata": {
     "path_title": "Recruitment Intern to HR Manager Readiness Path",
-    "simulations_included": [1, 2, 3, 4, 5],
+    "simulations_included": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
     "design_principles_applied": {
       "narrative_first": true,
       "artefacts_used_sparingly": true,
@@ -18,8 +24,12 @@
         "why_this_matters_for_getting_hired": "Hiring managers judge whether you can produce a clean shortlist fast without missing risk.",
         "estimated_time": "15 minutes",
         "deliverables_unlockable": {
-          "certifications": ["Shortlisting Reliability Proof"],
-          "badges": ["Signal-Spotter Under Pressure"],
+          "certifications": [
+            "Shortlisting Reliability Proof"
+          ],
+          "badges": [
+            "Signal-Spotter Under Pressure"
+          ],
           "recruiter_readable_proof": [
             "5-Candidate Shortlist + Rationale",
             "Risk Flags & Hiring Signals Log"
@@ -81,13 +91,17 @@
             "Select candidates with fastest joining only",
             "Select candidates with the highest years of experience regardless of relevance"
           ],
+          "scenario_id": "S1",
           "outcomes": {
             "correct": "Shortlist is role-fit heavy with manageable risk notes",
             "partially_correct": "Shortlist has 1–2 questionable profiles but is defensible",
             "incorrect": "Shortlist is driven by weak proxies (brand/years) and wastes panel time"
           },
           "immediate_feedback": "Impact: The panel trusts your shortlist enough to proceed—or starts re-checking everything you send.",
-          "skill_signals_observed": ["Role-relevant resume screening", "Signal vs noise judgment"]
+          "skill_signals_observed": [
+            "Role-relevant resume screening",
+            "Signal vs noise judgment"
+          ]
         },
         {
           "step_id": 2,
@@ -101,33 +115,41 @@
             "Keep and ignore the detail; move fast",
             "Pause the entire shortlist until full verification is done"
           ],
+          "scenario_id": "S1",
           "outcomes": {
             "correct": "You contain risk without killing speed",
             "partially_correct": "You reduce risk but slow the pipeline more than needed",
             "incorrect": "You either ignore risk or freeze hiring unnecessarily"
           },
           "immediate_feedback": "Impact: Your decision either prevents a later embarrassment—or creates a preventable interview failure.",
-          "skill_signals_observed": ["Hiring risk prioritisation", "Decision accountability"]
+          "skill_signals_observed": [
+            "Hiring risk prioritisation",
+            "Decision accountability"
+          ]
         },
         {
           "step_id": 3,
           "instruction_question": "The hiring manager asks: “Why these 5?” Reply in 5 bullets.",
           "explain_this_question": "HR Managers are judged on clarity under pressure. This step checks if you can justify a shortlist in business language that a hiring manager actually trusts. Your explanation should show a consistent selection logic and surface any known risks upfront so the manager isn’t surprised later.",
           "artefact_interaction_description": "You choose 5 bullet-lines from a pool to form your rationale email. Each choice shifts the manager’s trust meter (clarity, ownership, risk transparency).",
-          "interaction_type": "ordering",
+          "interaction_type": "MCQ",
           "options_inputs": [
             "Lead with must-have match, then role outcomes, then risk notes",
             "Lead with brand names, then years, then vague ‘culture fit’",
             "Lead with constraints and excuses, then selections",
             "Lead with risk notes only, then no positives"
           ],
+          "scenario_id": "S1",
           "outcomes": {
             "correct": "Rationale is crisp, consistent, and risk-aware",
             "partially_correct": "Rationale is okay but misses one key business angle",
             "incorrect": "Rationale is defensive, vague, or proxy-driven"
           },
           "immediate_feedback": "Impact: Leadership either increases your autonomy—or treats you as a coordinator only.",
-          "skill_signals_observed": ["Stakeholder communication", "Consistency in applying requirements"]
+          "skill_signals_observed": [
+            "Stakeholder communication",
+            "Consistency in applying requirements"
+          ]
         },
         {
           "step_id": 4,
@@ -141,13 +163,17 @@
             "Cancel the interviews until you source fresh candidates",
             "Ask the hiring manager to decide without your recommendation"
           ],
+          "scenario_id": "S1",
           "outcomes": {
             "correct": "You protect quality while managing expectations",
             "partially_correct": "You keep momentum but increase rework risk",
             "incorrect": "You break standards or offload accountability"
           },
           "immediate_feedback": "Impact: You either prevent ‘pipeline pollution’ or create it.",
-          "skill_signals_observed": ["Prioritising under time pressure", "Accountability to hiring manager"]
+          "skill_signals_observed": [
+            "Prioritising under time pressure",
+            "Accountability to hiring manager"
+          ]
         }
       ],
       "end_state": "This is exactly the kind of situation HR Managers are judged on."
@@ -159,8 +185,12 @@
         "why_this_matters_for_getting_hired": "You’re judged on how you contain interview breakdowns without damaging trust or candidate experience.",
         "estimated_time": "15 minutes",
         "deliverables_unlockable": {
-          "certifications": ["Candidate Experience Incident Proof"],
-          "badges": ["Crisis-Calm Coordinator"],
+          "certifications": [
+            "Candidate Experience Incident Proof"
+          ],
+          "badges": [
+            "Crisis-Calm Coordinator"
+          ],
           "recruiter_readable_proof": [
             "Interview Incident Timeline + Actions Taken",
             "Candidate Salvage Outcome Note"
@@ -228,7 +258,10 @@
             "incorrect": "Candidate withdraws or escalates publicly"
           },
           "immediate_feedback": "Impact: You either stabilise the situation—or turn a delay into a reputational incident.",
-          "skill_signals_observed": ["Crisis communication under stress", "Candidate experience protection"]
+          "skill_signals_observed": [
+            "Crisis communication under stress",
+            "Candidate experience protection"
+          ]
         },
         {
           "step_id": 2,
@@ -248,7 +281,10 @@
             "incorrect": "You prioritise convenience over candidate experience"
           },
           "immediate_feedback": "Impact: Your action defines whether hiring runs like a disciplined system or chaos.",
-          "skill_signals_observed": ["Stakeholder alignment during breakdowns", "Escalation judgment"]
+          "skill_signals_observed": [
+            "Stakeholder alignment during breakdowns",
+            "Escalation judgment"
+          ]
         },
         {
           "step_id": 3,
@@ -268,7 +304,10 @@
             "incorrect": "Creates exposure and trust loss"
           },
           "immediate_feedback": "Impact: Leadership either trusts your discretion—or worries you’ll mishandle sensitive issues.",
-          "skill_signals_observed": ["Escalation judgment", "Ownership without blame-shifting"]
+          "skill_signals_observed": [
+            "Escalation judgment",
+            "Ownership without blame-shifting"
+          ]
         },
         {
           "step_id": 4,
@@ -288,7 +327,10 @@
             "incorrect": "Unfair, risky, or evasive decision"
           },
           "immediate_feedback": "Impact: Your judgment either prevents repeat incidents—or normalises them.",
-          "skill_signals_observed": ["Candidate experience protection", "Decision accountability"]
+          "skill_signals_observed": [
+            "Candidate experience protection",
+            "Decision accountability"
+          ]
         }
       ],
       "end_state": "This is exactly the kind of situation HR Managers are judged on."
@@ -300,8 +342,12 @@
         "why_this_matters_for_getting_hired": "You’re evaluated on whether you add judgment to decisions, not just pass messages.",
         "estimated_time": "15 minutes",
         "deliverables_unlockable": {
-          "certifications": ["Hiring Recommendation Proof"],
-          "badges": ["Decision Partner"],
+          "certifications": [
+            "Hiring Recommendation Proof"
+          ],
+          "badges": [
+            "Decision Partner"
+          ],
           "recruiter_readable_proof": [
             "Hire/No-Hire Recommendation + Trade-off Rationale",
             "Risk Mitigation Plan for the Chosen Candidate"
@@ -369,7 +415,10 @@
             "incorrect": "Avoids accountability or ignores role constraints"
           },
           "immediate_feedback": "Impact: Your recommendation either accelerates delivery—or seeds a mis-hire risk.",
-          "skill_signals_observed": ["Trade-off reasoning", "Recommendation clarity"]
+          "skill_signals_observed": [
+            "Trade-off reasoning",
+            "Recommendation clarity"
+          ]
         },
         {
           "step_id": 2,
@@ -389,7 +438,10 @@
             "incorrect": "You inflame politics or become evasive"
           },
           "immediate_feedback": "Impact: Leadership sees you as a decision partner—or a push-over.",
-          "skill_signals_observed": ["Stakeholder influencing", "Decision hygiene"]
+          "skill_signals_observed": [
+            "Stakeholder influencing",
+            "Decision hygiene"
+          ]
         },
         {
           "step_id": 3,
@@ -409,7 +461,10 @@
             "incorrect": "Vague note triggers delays and rework"
           },
           "immediate_feedback": "Impact: Your clarity either speeds the offer—or stalls the process.",
-          "skill_signals_observed": ["Recommendation clarity", "Risk planning post-decision"]
+          "skill_signals_observed": [
+            "Recommendation clarity",
+            "Risk planning post-decision"
+          ]
         },
         {
           "step_id": 4,
@@ -429,7 +484,10 @@
             "incorrect": "High likelihood of offer rejection or internal conflict"
           },
           "immediate_feedback": "Impact: You either secure the hire—or create a predictable rejection.",
-          "skill_signals_observed": ["Risk planning", "Stakeholder alignment"]
+          "skill_signals_observed": [
+            "Risk planning",
+            "Stakeholder alignment"
+          ]
         }
       ],
       "end_state": "This is exactly the kind of situation HR Managers are judged on."
@@ -441,8 +499,12 @@
         "why_this_matters_for_getting_hired": "You’re judged on whether you protect employer brand and close risk when offers go sideways.",
         "estimated_time": "15 minutes",
         "deliverables_unlockable": {
-          "certifications": ["Offer Crisis Handling Proof"],
-          "badges": ["Brand Protector"],
+          "certifications": [
+            "Offer Crisis Handling Proof"
+          ],
+          "badges": [
+            "Brand Protector"
+          ],
           "recruiter_readable_proof": [
             "Offer Fallout Action Log",
             "Candidate Objection Response Summary"
@@ -510,7 +572,10 @@
             "incorrect": "Candidate escalates; leadership confidence drops"
           },
           "immediate_feedback": "Impact: Your response either prevents a brand incident—or triggers one.",
-          "skill_signals_observed": ["Employer brand risk containment", "Objection handling"]
+          "skill_signals_observed": [
+            "Employer brand risk containment",
+            "Objection handling"
+          ]
         },
         {
           "step_id": 2,
@@ -530,7 +595,10 @@
             "incorrect": "Offer collapses or triggers policy inconsistency"
           },
           "immediate_feedback": "Impact: You either close a hire cleanly—or create a precedent that haunts future offers.",
-          "skill_signals_observed": ["Cross-functional coordination", "Fairness and consistency"]
+          "skill_signals_observed": [
+            "Cross-functional coordination",
+            "Fairness and consistency"
+          ]
         },
         {
           "step_id": 3,
@@ -550,7 +618,10 @@
             "incorrect": "You either cave or block progress"
           },
           "immediate_feedback": "Impact: You’re seen as a business partner—or a bottleneck.",
-          "skill_signals_observed": ["Stakeholder management", "Policy consistency"]
+          "skill_signals_observed": [
+            "Stakeholder management",
+            "Policy consistency"
+          ]
         },
         {
           "step_id": 4,
@@ -570,7 +641,10 @@
             "incorrect": "Creates legal/compliance exposure"
           },
           "immediate_feedback": "Impact: You either protect the company—or create a liability trail.",
-          "skill_signals_observed": ["Risk containment", "Decision defensibility"]
+          "skill_signals_observed": [
+            "Risk containment",
+            "Decision defensibility"
+          ]
         }
       ],
       "end_state": "This is exactly the kind of situation HR Managers are judged on."
@@ -582,8 +656,12 @@
         "why_this_matters_for_getting_hired": "Leaders hire HR Managers who can diagnose hiring failures and improve outcomes fast.",
         "estimated_time": "15 minutes",
         "deliverables_unlockable": {
-          "certifications": ["Hiring Process Diagnosis Proof"],
-          "badges": ["System Fixer"],
+          "certifications": [
+            "Hiring Process Diagnosis Proof"
+          ],
+          "badges": [
+            "System Fixer"
+          ],
           "recruiter_readable_proof": [
             "Root Cause Hypothesis + Evidence",
             "90-Day Hiring Fix Plan (1-page)"
@@ -651,7 +729,10 @@
             "incorrect": "Blame-heavy or unfalsifiable explanation"
           },
           "immediate_feedback": "Impact: Leadership either gives you the mandate—or starts doubting your readiness.",
-          "skill_signals_observed": ["Diagnosing bottlenecks", "Executive communication"]
+          "skill_signals_observed": [
+            "Diagnosing bottlenecks",
+            "Executive communication"
+          ]
         },
         {
           "step_id": 2,
@@ -671,7 +752,10 @@
             "incorrect": "Worsens outcomes or stalls hiring"
           },
           "immediate_feedback": "Impact: You either reduce leakage—or create new bottlenecks.",
-          "skill_signals_observed": ["Choosing high-leverage interventions", "Balancing speed and quality"]
+          "skill_signals_observed": [
+            "Choosing high-leverage interventions",
+            "Balancing speed and quality"
+          ]
         },
         {
           "step_id": 3,
@@ -691,7 +775,10 @@
             "incorrect": "You miss the pattern and propose scattered fixes"
           },
           "immediate_feedback": "Impact: Your call either focuses the fix—or spreads effort thin.",
-          "skill_signals_observed": ["Symptom vs root cause", "Data-informed judgment"]
+          "skill_signals_observed": [
+            "Symptom vs root cause",
+            "Data-informed judgment"
+          ]
         },
         {
           "step_id": 4,
@@ -711,7 +798,10 @@
             "incorrect": "Plan is activity-based, not outcome-based"
           },
           "immediate_feedback": "Impact: Leadership either signs off—or sends you back to rework.",
-          "skill_signals_observed": ["Executive communication", "Measurable planning"]
+          "skill_signals_observed": [
+            "Executive communication",
+            "Measurable planning"
+          ]
         }
       ],
       "end_state": "This is exactly the kind of situation HR Managers are judged on."

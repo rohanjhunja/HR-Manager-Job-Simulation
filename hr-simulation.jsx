@@ -64,38 +64,35 @@ window.OptionButton = ({ label, selected, onClick, disabled }) => {
   );
 };
 
-window.FeedbackPanel = ({ type, message, points, outcomes, onComplete }) => {
+window.FeedbackPanel = ({ type, message, points, outcomeText, percentile, onComplete }) => {
   const COLORS = window.COLORS;
   const ProgressTimer = window.ProgressTimer;
   const isPositive = type === 'correct';
   const isPartial = type === 'partial';
 
-  // Determine the specific outcome text based on the type
-  let outcomeText = null;
-  if (outcomes) {
-    if (isPositive) outcomeText = outcomes.correct;
-    else if (isPartial) outcomeText = outcomes.partially_correct;
-    else outcomeText = outcomes.incorrect;
-  }
+  // "Solved faster than X%" logic - Hide if incorrect
+  const speedText = (percentile && type !== 'incorrect') ? `Solved faster than ${percentile}% of candidates` : null;
 
-  // Calculate total reading length for duration
-  const totalLength = (outcomeText ? outcomeText.length : 0) + (message ? message.length : 0);
-  // Base duration of 2.5s + 50ms per character
+  // Calculate duration
+  const totalLength = (speedText ? speedText.length : 0);
   const duration = Math.max(2500, totalLength * 50);
 
   return (
-    <div style={{ background: isPositive ? COLORS.successBg : isPartial ? COLORS.highlightSoft : COLORS.warningBg, borderRadius: '12px', padding: '16px', borderLeft: `4px solid ${isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.warning}` }}>
+    <div onClick={onComplete} style={{ cursor: 'pointer', background: isPositive ? COLORS.successBg : isPartial ? COLORS.highlightSoft : COLORS.warningBg, borderRadius: '12px', padding: '16px', borderLeft: `4px solid ${isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.warning}` }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-        <div style={{ fontSize: '14px', color: isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.warning, fontWeight: 600 }}>{isPositive ? '✓ Strong choice' : isPartial ? '◐ Acceptable, But Try Again' : '✗ Risky approach, Try Again'}</div>
-        <div style={{ fontSize: '14px', fontWeight: 700, color: isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.textMuted }}>{points > 0 ? `+${points} Skillions` : ''}</div>
+        <div style={{ fontSize: '16px', color: isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.warning, fontWeight: 700 }}>{isPositive ? '✓ Strong choice' : isPartial ? '◐ Acceptable' : '✗ Risky approach'}</div>
+        <div style={{ fontSize: '14px', fontWeight: 700, color: isPositive ? COLORS.success : isPartial ? COLORS.highlight : COLORS.textMuted }}>{points > 0 ? `+${points} ⚡` : ''}</div>
       </div>
 
-      {outcomeText && (
-        <div style={{ marginBottom: '0px' }}>
-          <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 300, lineHeight: 1.4 }}>{outcomeText}</div>
+      {speedText && (
+        <div style={{ marginBottom: '8px', fontSize: '13px', fontWeight: 400, color: COLORS.textMuted }}>
+          {speedText}
         </div>
       )}
 
+      <div style={{ fontSize: '12px', color: COLORS.textMuted, marginTop: '8px', fontStyle: 'italic' }}>
+        {/* Tap to continue → */}
+      </div>
 
       <ProgressTimer
         duration={duration}
@@ -126,7 +123,7 @@ window.TradeOffMeters = function ({ meters, onComplete }) {
           <input type="range" min="0" max="100" value={values[i]} onChange={(e) => handleChange(i, e.target.value)} style={{ width: '100%', accentColor: COLORS.highlight, cursor: 'pointer' }} />
         </div>
       ))}
-      <div style={{ position: 'sticky', bottom: 0, padding: '16px 0 20px 0', background: COLORS.bg, zIndex: 10, marginTop: 'auto' }}>
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '20px', background: COLORS.bg, zIndex: 10, maxWidth: '600px', margin: '0 auto' }}>
         <button id="tradeoff-confirm" onClick={() => onComplete(values)} style={{ width: '100%', padding: '16px', background: COLORS.cta, border: 'none', borderRadius: '14px', color: '#0D2436', fontWeight: 600, boxShadow: '0 4px 12px rgba(127, 194, 65, 0.3)' }}>Finalise Trade-offs</button>
       </div>
     </div>
@@ -157,10 +154,51 @@ window.RationaleBuilder = function ({ pool, minSelection = 3, maxSelection = 5, 
         ))}
       </div>
       {selected.length >= minSelection && (
-        <div style={{ position: 'sticky', bottom: 0, padding: '16px 0 20px 0', background: COLORS.bg, zIndex: 10, marginTop: 'auto' }}>
+        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '20px', background: COLORS.bg, zIndex: 10, maxWidth: '600px', margin: '0 auto' }}>
           <button id="rationale-confirm" onClick={() => onComplete(selected)} style={{ width: '100%', padding: '16px', background: COLORS.cta, border: 'none', borderRadius: '14px', color: '#0D2436', fontWeight: 600, boxShadow: '0 4px 12px rgba(127, 194, 65, 0.3)' }}>Send Rationale</button>
         </div>
       )}
+    </div>
+  );
+};
+
+// --- Bonus Timer Component ---
+window.BonusTimer = ({ duration = 30, onExpire }) => {
+  const COLORS = window.COLORS;
+  const [timeLeft, setTimeLeft] = React.useState(duration);
+
+  React.useEffect(() => {
+    // If expired, don't tick
+    if (timeLeft <= 0) {
+      onExpire?.();
+      return;
+    }
+    const interval = setInterval(() => {
+      setTimeLeft(prev => Math.max(0, prev - 0.1));
+    }, 100);
+    return () => clearInterval(interval);
+  }, [timeLeft, onExpire]);
+
+  if (timeLeft <= 0) return null;
+
+  const widthPercent = (timeLeft / duration) * 100;
+
+  return (
+    <div style={{ position: 'relative', width: '80px', height: '20px', background: 'rgba(64, 106, 255, 0.1)', borderRadius: '4px', overflow: 'hidden' }}>
+      <div style={{
+        height: '100%',
+        width: `${widthPercent}%`,
+        background: COLORS.highlight,
+        transition: 'width 0.1s linear'
+      }} />
+      <div style={{
+        position: 'absolute',
+        top: 0, left: 0, right: 0, bottom: 0,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        fontSize: '10px', fontWeight: 700, color: COLORS.text, textShadow: '0 1px 2px rgba(0,0,0,0.5)'
+      }}>
+        Bonus
+      </div>
     </div>
   );
 };
@@ -587,7 +625,16 @@ window.SimulationResult = ({ simulation, score, onContinue, nextSimTitle }) => {
             <div style={{ fontSize: '24px', opacity: 0.5 }}>&#x1F393;</div>
             <div>
               <div style={{ fontSize: '14px', color: COLORS.textMuted, fontWeight: 600 }}>HR Manager Job Readiness Certification</div>
-              <div style={{ fontSize: '11px', color: COLORS.textDim, marginTop: '2px' }}>Score >60% in 10 Simulations to Unlock</div>
+              <div style={{ fontSize: '11px', color: COLORS.textDim, marginTop: '2px' }}>Score &gt;60% in 10 Simulations to Unlock</div>
+            </div>
+          </div>
+
+          {/* Job Options Card */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', padding: '12px', border: `1px dashed ${COLORS.textDim}`, borderRadius: '12px', opacity: 0.8 }}>
+            <div style={{ fontSize: '24px', opacity: 0.5 }}>💼</div>
+            <div>
+              <div style={{ fontSize: '14px', color: COLORS.textMuted, fontWeight: 600 }}>Job Options from 1100+ Companies</div>
+              <div style={{ fontSize: '11px', color: COLORS.textDim, marginTop: '2px' }}>Emailed to you on passing requirements</div>
             </div>
           </div>
 
@@ -640,9 +687,99 @@ window.SimulationResult = ({ simulation, score, onContinue, nextSimTitle }) => {
         )}
       </div>
 
-      <div style={{ position: 'sticky', bottom: 0, padding: '20px 0', background: `linear-gradient(180deg, rgba(9, 22, 32, 0) 0%, #091620 20%)`, zIndex: 10 }}>
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '20px', background: `linear-gradient(180deg, rgba(9, 22, 32, 0) 0%, #091620 20%)`, zIndex: 10, maxWidth: '600px', margin: '0 auto' }}>
         <button onClick={onContinue} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>
           Continue & Unlock Next Scenario
+        </button>
+      </div>
+    </div>
+  );
+};
+
+window.ReviewPage = ({ history, onContinue }) => {
+  const COLORS = window.COLORS;
+  // Filter to only show partial and incorrect answers
+  const reviewItems = history.filter(item => item.type !== 'correct');
+  const [expandedIndex, setExpandedIndex] = React.useState(0);
+
+  const toggleExpand = (idx) => {
+    setExpandedIndex(expandedIndex === idx ? null : idx);
+  };
+
+  if (!history || history.length === 0 || reviewItems.length === 0) {
+    return (
+      <div style={{ minHeight: '100vh', background: COLORS.bg, padding: '24px 20px 100px 20px', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 600, color: COLORS.text, marginBottom: '16px' }}>Review Your Gaps</h2>
+        <div style={{ color: COLORS.success, fontSize: '15px', marginBottom: '20px' }}>🎉 All answers correct! Great job.</div>
+        <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '20px', background: `linear-gradient(180deg, rgba(9, 22, 32, 0) 0%, #091620 20%)`, zIndex: 100, maxWidth: '600px', margin: '0 auto' }}>
+          <button onClick={onContinue} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>Unlock Career Benefits</button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ minHeight: '100vh', background: COLORS.bg, padding: '24px 20px 100px 20px', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+      <h2 style={{ fontSize: '24px', fontWeight: 600, color: COLORS.text, marginBottom: '24px' }}>Review Your Choices</h2>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        {reviewItems.map((item, idx) => {
+          const isExpanded = expandedIndex === idx;
+          const isPartial = item.type === 'partial';
+          const statusColor = isPartial ? COLORS.highlight : COLORS.warning;
+          const statusIcon = isPartial ? '◑' : '⚠';
+
+          return (
+            <div key={idx} style={{ background: COLORS.bgCard, borderRadius: '12px', border: `1px solid ${COLORS.bgLight}`, overflow: 'hidden' }}>
+              <div
+                onClick={() => toggleExpand(idx)}
+                style={{ padding: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', cursor: 'pointer', background: isExpanded ? COLORS.bgLight : 'transparent' }}
+              >
+                <div style={{ flex: 1, marginRight: '12px' }}>
+                  <div style={{ fontSize: '14px', fontWeight: 500, color: COLORS.text, lineHeight: 1.4 }}>
+                    {item.outcomeText}
+                  </div>
+                </div>
+                <div style={{ color: statusColor, fontSize: '16px', fontWeight: 700, flexShrink: 0 }}>
+                  {statusIcon}
+                </div>
+              </div>
+
+              {isExpanded && (
+                <div style={{ padding: '16px', borderTop: `1px solid ${COLORS.bg}20`, background: COLORS.bgCard }}>
+                  <div style={{ marginBottom: '16px' }}>
+                    <div style={{ fontSize: '11px', color: COLORS.textDim, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>Question</div>
+                    <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 500 }}>{item.question}</div>
+                  </div>
+
+                  <div style={{ marginBottom: '16px' }}>
+                    <div style={{ fontSize: '11px', color: COLORS.textDim, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>Your Answer</div>
+                    <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 500 }}>{item.userAnswer}</div>
+                  </div>
+
+                  {item.correctAnswer && (
+                    <div style={{ background: COLORS.successBg, padding: '12px', borderRadius: '8px', border: `1px solid ${COLORS.success}30` }}>
+                      <div style={{ fontSize: '11px', color: COLORS.success, fontWeight: 700, marginBottom: '6px' }}>BEST ANSWER</div>
+                      <div style={{ fontSize: '13px', color: COLORS.textMuted, lineHeight: 1.5 }}>
+                        <div style={{ marginBottom: '6px', color: COLORS.success, }}>{item.correctAnswer}</div>
+
+                      </div>
+                    </div>
+                  )}
+
+
+
+
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, padding: '20px', background: `linear-gradient(180deg, rgba(9, 22, 32, 0) 0%, #091620 20%)`, zIndex: 100, maxWidth: '600px', margin: '0 auto' }}>
+        <button onClick={onContinue} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>
+          Unlock Career Benefits
         </button>
       </div>
     </div>
@@ -677,13 +814,78 @@ window.HRSimulationApp = function ({ simulationData }) {
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [shuffledOptions, setShuffledOptions] = useState([]);
+  const [bonusDuration, setBonusDuration] = useState(30);
+
+  // Helper to calculate question complexity/duration
+  const calculateBonusDuration = (stepObj, optionsArr) => {
+    if (!stepObj) return 30;
+    const qLen = stepObj.instruction_question ? stepObj.instruction_question.length : 0;
+    const optLen = optionsArr ? optionsArr.reduce((acc, opt) => acc + (typeof opt === 'string' ? opt.length : 20), 0) : 0;
+    const totalChars = qLen + optLen;
+    // 15s min, 30s max. Approx 1s per 18 chars + base buffer
+    return Math.min(30, Math.max(15, Math.ceil(totalChars / 15)));
+  };
   const [optionIndices, setOptionIndices] = useState([]);
   const [hasAttemptedCurrentStep, setHasAttemptedCurrentStep] = useState(false);
   const [attemptCount, setAttemptCount] = useState(0);
 
+  // New State for Review & Timing
+  const [userHistory, setUserHistory] = useState([]);
+  const [startTime, setStartTime] = useState(null);
+
+  // Simulation Timer
+  const [simElapsed, setSimElapsed] = useState(0);
+  const [simTimerPaused, setSimTimerPaused] = useState(true);
+  const [lastActivity, setLastActivity] = useState(Date.now());
+  const [colonVisible, setColonVisible] = useState(true);
+
+  const [previousOutcome, setPreviousOutcome] = useState(null);
+
+  // Timer interval: ticks every second, pauses after 5min idle
+  useEffect(() => {
+    if (simTimerPaused) return;
+    const interval = setInterval(() => {
+      const now = Date.now();
+      if (now - lastActivity > 5 * 60 * 1000) {
+        // Idle for 5 min — pause
+        setSimTimerPaused(true);
+        return;
+      }
+      setSimElapsed(prev => prev + 1);
+      setColonVisible(prev => !prev);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [simTimerPaused, lastActivity]);
+
+  // Track user activity to resume timer
+  useEffect(() => {
+    const handleActivity = () => {
+      setLastActivity(Date.now());
+      if (simTimerPaused && (screen === 'step' || screen === 'scenario')) {
+        setSimTimerPaused(false);
+      }
+    };
+    window.addEventListener('click', handleActivity);
+    window.addEventListener('touchstart', handleActivity);
+    return () => {
+      window.removeEventListener('click', handleActivity);
+      window.removeEventListener('touchstart', handleActivity);
+    };
+  }, [simTimerPaused, screen]);
+
+  const formatTimer = (totalSeconds) => {
+    const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+    const s = (totalSeconds % 60).toString().padStart(2, '0');
+    return { m, s };
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [screen, currentStep]);
+    // Reset start time when entering a step (if not showing feedback)
+    if (screen === 'step' && !isFeedbackVisible) {
+      setStartTime(Date.now());
+    }
+  }, [screen, currentStep, isFeedbackVisible]);
 
   // Analytics: Track Screen Views (Composite)
   React.useEffect(() => {
@@ -732,9 +934,17 @@ window.HRSimulationApp = function ({ simulationData }) {
       }
       setOptionIndices(indices);
       setShuffledOptions(indices.map(i => step.options_inputs[i]));
+
+      // Calculate Bonus Duration
+      const duration = calculateBonusDuration(step, step.options_inputs);
+      setBonusDuration(duration);
     } else {
       setShuffledOptions([]);
       setOptionIndices([]);
+      // Default duration if no options
+      if (step) {
+        setBonusDuration(calculateBonusDuration(step, []));
+      }
     }
     setHasAttemptedCurrentStep(false);
     setAttemptCount(0);
@@ -789,78 +999,123 @@ window.HRSimulationApp = function ({ simulationData }) {
       else if (originalIndex === 1) type = 'partial';
     }
 
+    // Time Calculation
+    const timeTaken = startTime ? (Date.now() - startTime) / 1000 : 999;
+    // Streak Bonus Rule: Correct/Partial answer within dynamic bonus duration
+    const isTimedBonus = (type === 'correct' || type === 'partial') && timeTaken <= bonusDuration;
+
+    // Calculate Percentile
+    // Base: 60%. Max: 98%.
+    // Formula: (bonusDuration - timeTaken) / bonusDuration * 38 + 60
+    let percentile = 0;
+    if (timeTaken < bonusDuration) {
+      percentile = Math.min(98, Math.max(60, Math.floor(60 + ((bonusDuration - timeTaken) / bonusDuration) * 38)));
+    } else {
+      percentile = Math.floor(Math.random() * (60 - 40) + 40); // 40-60% for slow answers
+    }
+
     // Points & Streak Logic
     let points = 0;
-    let streakBonus = 0;
 
-    // Only update streak if this is the first attempt at this step
+    // Streak Update
     let currentStreakCount = streak;
-
     if (!hasAttemptedCurrentStep) {
-      if (type === 'correct') {
+      if (isTimedBonus) {
         currentStreakCount = streak + 1;
         setStreak(currentStreakCount);
       } else {
-        setStreak(0); // Break streak
+        // If not a timed bonus (either too slow or incorrect), streak resets
+        setStreak(0);
         currentStreakCount = 0;
       }
-      setHasAttemptedCurrentStep(true);
     }
 
     // Calculate Points
     if (type === 'correct' && !hasAttemptedCurrentStep) {
       // Base 10 + (Streak * 5)
-      // Example: Streak 1 -> 10 + 5 = 15
-      // Example: Streak 2 -> 10 + 10 = 20
       points = 10 + (currentStreakCount * 5);
     } else {
-      // No points for partial, incorrect, or retries
       points = 0;
+    }
+
+    // Construct Feedback Message
+    let feedbackMsg = step.immediate_feedback || "Your decision has been recorded.";
+    if (isTimedBonus && !hasAttemptedCurrentStep) {
+      feedbackMsg += " ⏰ Speed Bonus!";
+    }
+
+    // Determine specific outcome text
+    let outcomeText = "";
+    if (step.outcomes) {
+      if (type === 'correct') outcomeText = step.outcomes.correct;
+      else if (type === 'partial') outcomeText = step.outcomes.partially_correct;
+      else outcomeText = step.outcomes.incorrect;
     }
 
     const result = {
       type: type,
-      message: step.immediate_feedback || "Your decision has been recorded.",
-      points: points
+      message: feedbackMsg,
+      outcomeText: outcomeText,
+      points: points,
+      percentile: percentile,
+      // Metadata for history
+      scenarioId: step.scenario_id,
+      stepId: step.step_id,
+      question: step.instruction_question,
+      userAnswer: candidates ? 'Candidate Selection' : (visualIndex !== null ? shuffledOptions[visualIndex] : 'Custom Input'),
+      correctAnswer: step.options_inputs ? step.options_inputs[0] : null,
+      explanation: step.explain_this_question // Capture explanation for review
     };
+
+    // Record to history if first attempt
+    console.log("Evaluating step:", step.step_id, "Scenario:", step.scenario_id, "Attempted:", hasAttemptedCurrentStep);
+    if (!hasAttemptedCurrentStep) {
+      console.log("Recording history item:", result);
+      setUserHistory(prev => [...prev, result]);
+    }
+
     setStepResults(prev => [...prev, result]);
     setAttemptCount(prev => prev + 1);
     setIsFeedbackVisible(true);
   };
 
   const handleFeedbackComplete = () => {
-    const lastResult = stepResults[stepResults.length - 1];
-    if (lastResult.type === 'correct') {
-      proceedToNextStep();
-    } else {
-      // Retry Flow
-      setIsFeedbackVisible(false);
-      setSelectedOption(null);    // Reset selection to allow picking again
-
-      // Auto-expand explanation ONLY if user has failed 3 times
-      if (attemptCount >= 3) {
-        setTimeout(() => {
-          setIsExplainExpanded(true);
-        }, 300);
-      }
-    }
+    // Proceed regardless of correctness
+    proceedToNextStep();
   };
 
   const proceedToNextStep = () => {
     // Add points from the just-completed step
+    let lastOutcomeData = null;
     if (isFeedbackVisible && stepResults.length > 0) {
       const lastResult = stepResults[stepResults.length - 1];
       setScore(prev => prev + lastResult.points);
+      // Store outcome to bridge to next step
+      lastOutcomeData = { text: lastResult.outcomeText, type: lastResult.type };
     }
 
     setIsFeedbackVisible(false);
     if (currentStep < steps.length - 1) {
+      // Check if Scenario is changing
+      const nextStep = steps[currentStep + 1];
+      const nextScenarioId = nextStep.scenario_id;
+      const currentScenarioId = steps[currentStep].scenario_id;
+
+      if (nextScenarioId === currentScenarioId) {
+        setPreviousOutcome(lastOutcomeData);
+      } else {
+        setPreviousOutcome(null); // Clear if scenario changes
+      }
+
       setCurrentStep(prev => prev + 1);
       setSelectedOption(null);
       setSelectedCandidates([]);
       setScreen('step');
     } else {
-      setScreen('sim_result');
+      setPreviousOutcome(null);
+      // Skip review if all answers are correct
+      const allCorrect = userHistory.every(item => item.type === 'correct');
+      setScreen(allCorrect ? 'sim_result' : 'review');
     }
     setIsExplainExpanded(false);
   };
@@ -873,6 +1128,7 @@ window.HRSimulationApp = function ({ simulationData }) {
       setSelectedOption(null);
       setSelectedCandidates([]);
       setStepResults([]);
+      setUserHistory([]); // Clear history for next simulation
       setScreen('start');
     } else {
       setScreen('results');
@@ -886,11 +1142,22 @@ window.HRSimulationApp = function ({ simulationData }) {
           <div style={{ background: COLORS.highlightSoft, color: COLORS.highlight, fontSize: '11px', fontWeight: 600, letterSpacing: '0.5px', padding: '6px 12px', borderRadius: '20px', alignSelf: 'flex-start', marginBottom: '20px' }}>SIMULATION {currentSimulationIndex + 1} OF {simulations.length}</div>
           <h1 style={{ fontSize: '32px', fontWeight: 300, color: COLORS.text, lineHeight: 1.2, marginBottom: '16px' }}>{currentSim.simulation_metadata.simulation_title}</h1>
           {/* <p style={{ fontSize: '15px', color: COLORS.textMuted, lineHeight: 1.6, marginBottom: '32px' }}>{currentSim.simulation_metadata.why_this_matters_for_getting_hired}.<br /><br /><strong>Your Actions Will Solve Key Job Requirements:</strong></p> */}
-          <p style={{ fontSize: '15px', color: COLORS.textMuted, lineHeight: 1.6, marginBottom: '32px' }}><strong>Your Actions Will Solve Key Job Requirements:</strong></p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '40px' }}>
-            {currentSim.simulation_metadata.primary_role_competencies_evaluated.slice(0, 4).map((skill, i) => (
-              <span key={i} style={{ background: COLORS.bgCard, color: COLORS.textMuted, fontSize: '12px', padding: '8px 12px', borderRadius: '8px' }}>{skill}</span>
-            ))}
+          <div style={{ fontSize: '12px', color: COLORS.highlight, marginBottom: '16px', fontWeight: 700, textTransform: 'uppercase' }}>YOU WILL UNLOCK</div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '40px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '14px', background: COLORS.bgCard, borderRadius: '12px', border: `1px solid ${COLORS.bgLight}` }}>
+              <div style={{ fontSize: '16px' }}>✅</div>
+              <div>
+                <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600 }}>HR Manager Job Readiness Certificate</div>
+                <div style={{ fontSize: '12px', color: COLORS.highlight, marginTop: '2px' }}>5x Recruiter Callbacks</div>
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '14px', background: COLORS.bgCard, borderRadius: '12px', border: `1px solid ${COLORS.bgLight}` }}>
+              <div style={{ fontSize: '16px' }}>💼</div>
+              <div>
+                <div style={{ fontSize: '14px', color: COLORS.text, fontWeight: 600 }}>Job Options from 1100+ Companies</div>
+                <div style={{ fontSize: '12px', color: COLORS.highlight, marginTop: '2px' }}>Job Matching & Referrals from our hiring partners</div>
+              </div>
+            </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: COLORS.textDim, fontSize: '13px', marginBottom: '8px' }}>
             <span style={{ fontSize: '16px' }}>⏱</span>{currentSim.simulation_metadata.estimated_time || '15 minutes'} · {steps.length} critical decisions
@@ -902,6 +1169,15 @@ window.HRSimulationApp = function ({ simulationData }) {
         <div style={{ position: 'sticky', bottom: 0, padding: '20px 0', background: 'linear-gradient(180deg, rgba(9, 22, 32, 0) 0%, #091620 20%)', zIndex: 10, marginTop: 'auto' }}>
           <button id="start-simulation" onClick={() => {
             window.trackEvent('simulation_start', { title: currentSim.simulation_metadata.simulation_title });
+            setUserHistory([]);
+            setStepResults([]);
+            setCurrentStep(0);
+            setSelectedOption(null);
+            setSelectedCandidates([]);
+            setIsFeedbackVisible(false);
+            setSimElapsed(0);
+            setSimTimerPaused(false);
+            setLastActivity(Date.now());
             setScreen('scenario');
           }} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>Start Simulation</button>
         </div>
@@ -919,7 +1195,7 @@ window.HRSimulationApp = function ({ simulationData }) {
           <span style={{ fontSize: '14px', color: COLORS.textMuted, lineHeight: 1.5 }}>
             You're an HR Manager in a <strong>{currentScenario.workplace_context.company_type}</strong>.
             <br />
-            REMEMBER: {currentScenario.workplace_context.business_state}.
+            {/* REMEMBER: {currentScenario.workplace_context.business_state}. */}
           </span>
         </div>
 
@@ -959,7 +1235,8 @@ window.HRSimulationApp = function ({ simulationData }) {
             type={result.type}
             message={result.message}
             points={result.points}
-            outcomes={step.outcomes}
+            outcomeText={result.outcomeText}
+            percentile={result.percentile}
             onComplete={handleFeedbackComplete}
           />
         </div>
@@ -988,25 +1265,25 @@ window.HRSimulationApp = function ({ simulationData }) {
         // We try to find the scenario context to get the incoming message
         const scenario = currentSim.scenario_breakdown.find(s => s.scenario_id === step.scenario_id);
         const message = scenario ? scenario.crisis_or_decision_trigger : "How do you respond?";
-        artefact = <window.ChatResponseSelector incomingMessage={message} options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.ChatResponseSelector incomingMessage={message} options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); }} />;
       } else if (description.includes('timeline')) {
         // V2 S1 Step 2: Timeline
-        artefact = <window.TimelineVisualizer options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.TimelineVisualizer options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); }} />;
       } else if (description.includes('huddle')) {
         // V2 S1 Step 3: Video Call
-        artefact = <window.VideoCallProfile options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.VideoCallProfile options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); }} />;
       } else if (description.includes('comparison')) {
         // V2 S1 Step 4: Comparison
-        artefact = <window.CandidateComparisonTable options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.CandidateComparisonTable options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); }} />;
       } else if (description.includes('approval note')) {
         // V2 S2 Step 6: Approval Note
-        artefact = <window.ApprovalNoteBuilder options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.ApprovalNoteBuilder options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); }} />;
       } else if (description.includes('one-page memo')) {
         // V2 S3 Step 9: Memo Structure
-        artefact = <window.MemoStructureBuilder options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.MemoStructureBuilder options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); }} />;
       } else if (description.includes('closure proof')) {
         // V2 S3 Step 15: Closure Proof
-        artefact = <window.ClosureProofPacket options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); evaluateStep(idx); }} />;
+        artefact = <window.ClosureProofPacket options={shuffledOptions} onSelect={(idx) => { handleOptionSelect(idx); }} />;
       } else if ((step.interaction_type === 'ordering' || step.interaction_type === 'selection') && step.options_inputs) {
         // Generic multi-select / ordering builder
         artefact = (
@@ -1060,14 +1337,33 @@ window.HRSimulationApp = function ({ simulationData }) {
         </div>
         <div style={{ fontSize: '11px', fontWeight: 600, color: COLORS.textDim, letterSpacing: '0.5px', marginBottom: '12px', display: 'flex', justifyContent: 'space-between' }}>
           <span>STEP {currentStep + 1} OF {steps.length}</span>
-          <div style={{ display: 'flex', gap: '12px' }}>
-            {streak > 1 && <span style={{ color: COLORS.warning, fontWeight: 700 }}>🔥 {streak}</span>}
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+            {streak >= 2 && (
+              !isFeedbackVisible ? (
+                <window.BonusTimer duration={bonusDuration} onExpire={() => { }} />
+              ) : (
+                <span style={{ color: COLORS.warning, fontWeight: 700 }}>⏰ {streak}</span>
+              )
+            )}
             <span style={{ color: COLORS.highlight }}>⚡️ {score.toLocaleString()}</span>
+            {(() => {
+              const t = formatTimer(simElapsed); return (
+                <span style={{ color: COLORS.textDim, fontSize: '11px', fontFamily: 'monospace', background: 'rgba(56, 130, 202, 0.15)', padding: '3px 8px', borderRadius: '6px' }}>
+                  ⏰ {t.m}<span style={{ opacity: colonVisible ? 1 : 0 }}>:</span>{t.s}
+                </span>
+              );
+            })()}
           </div>
         </div>
-        <h3 style={{ fontSize: '20px', fontWeight: 400, color: COLORS.text, lineHeight: 1.35, marginBottom: '16px' }}>{step.instruction_question}</h3>
 
-        <div style={{ marginBottom: '24px' }}>
+        <h3 style={{ fontSize: '20px', fontWeight: 400, color: COLORS.text, lineHeight: 1.35, marginBottom: '16px' }}>{previousOutcome && (
+          <div style={{ fontSize: '16px', fontWeight: 200, color: COLORS.textDim, lineHeight: 1.35, marginBottom: '16px' }}>
+            {previousOutcome.text}
+          </div>
+        )} {step.instruction_question}</h3>
+
+
+        <div style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <button
             onClick={() => setIsExplainExpanded(!isExplainExpanded)}
             style={{
@@ -1086,31 +1382,28 @@ window.HRSimulationApp = function ({ simulationData }) {
             <span style={{ transform: isExplainExpanded ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>▶</span>
             Explain This Question
           </button>
-
-          {isExplainExpanded && (
-            <div style={{
-              marginTop: '12px',
-              background: 'rgba(64, 106, 255, 0.08)',
-              borderRadius: '12px',
-              padding: '16px',
-              border: `1px solid ${COLORS.highlight}`,
-              borderLeft: `4px solid ${COLORS.highlight}`
-            }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <span style={{ fontSize: '18px' }}>💡</span>
-                <p style={{ fontSize: '13px', color: COLORS.text, lineHeight: 1.6, margin: 0 }}>
-                  {step.explain_this_question}
-                </p>
-              </div>
-            </div>
-          )}
         </div>
-        {artefact}
-        {(selectedOption !== null || selectedCandidates.length > 0) && currentSimulationIndex === 0 && currentStep === 0 && (
-          <div style={{ position: 'sticky', bottom: 0, padding: '16px 0 20px 0', background: COLORS.bg, zIndex: 10, marginTop: 'auto' }}>
-            <button id="confirm-decision" onClick={() => evaluateStep()} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>Confirm Decision</button>
+
+        {isExplainExpanded && (
+          <div style={{
+            marginBottom: '24px',
+            marginTop: '12px',
+            background: 'rgba(64, 106, 255, 0.08)',
+            borderRadius: '12px',
+            padding: '16px',
+            border: `1px solid ${COLORS.highlight}`,
+            borderLeft: `4px solid ${COLORS.highlight}`
+          }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+              <span style={{ fontSize: '18px' }}>💡</span>
+              <p style={{ fontSize: '13px', color: COLORS.text, lineHeight: 1.6, margin: 0 }}>
+                {step.explain_this_question}
+              </p>
+            </div>
           </div>
         )}
+        {artefact}
+
       </div>
     );
   }
@@ -1146,6 +1439,15 @@ window.HRSimulationApp = function ({ simulationData }) {
         nextSimTitle={nextSim ? nextSim.simulation_metadata.simulation_title : null}
       />
     )
+  }
+
+  if (screen === 'review') {
+    return (
+      <window.ReviewPage
+        history={userHistory}
+        onContinue={() => setScreen('sim_result')}
+      />
+    );
   }
 
   if (screen === 'results') {
@@ -1190,7 +1492,7 @@ window.HRSimulationApp = function ({ simulationData }) {
         </div>
 
         <div style={{ position: 'sticky', bottom: 0, padding: '20px 0', background: 'transperant', zIndex: 10, marginTop: 'auto' }}>
-          <button id="reset-path" onClick={() => window.location.reload()} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>Start New Path</button>
+          <button id="reset-path" onClick={() => window.location.reload()} style={{ width: '100%', padding: '18px', background: COLORS.cta, border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', fontWeight: 600, color: '#0D2436', boxShadow: '0 4px 24px rgba(127, 194, 65, 0.3)' }}>⏳ Daily Scenarios Sent To Whatsapp</button>
         </div>
       </div>
     );

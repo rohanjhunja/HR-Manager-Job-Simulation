@@ -103,7 +103,7 @@
 </head>
 
 <body>
-    <div id="root"></div>
+    <div id="root" style="max-width: 600px; margin: 0 auto;"></div>
     <!-- Load the JSX file as a Babel script -->
     <script type="text/babel" src="hr-simulation.jsx"></script>
     <script type="text/babel">
@@ -118,7 +118,7 @@
                 // Example: /?sim=custom_test loads custom_test.json
                 const params = new URLSearchParams(window.location.search);
                 const simId = params.get('sim') || 'simulation_1-5';
-                const jsonPath = `${simId}.json`;
+                const jsonPath = `${simId}.json?t=${Date.now()}`;
 
                 console.log(`Loading simulation from: ${jsonPath}`);
 
